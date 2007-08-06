@@ -10,6 +10,9 @@
  * For support, I can usually be found on the #jquery IRC channel on irc.freenode.net
  * ===============================================================================================================
  * ^^^ Changelog ^^^
+ * Version 1.3.1 (06/08/2007)
+ * Fixed bug with Google Maps API change.  Can now find Google map objects again
+ * 
  * Version 1.3 (31/07/2007)
  * Added support for creating Yahoo! Maps, can create Map, Satallite or Hybrid.  Check out available options below
  * Added support for creating points on Yahoo! maps.
@@ -65,7 +68,7 @@
 				}
 			});
 			//Google Maps
-		} else if (jmap.i.Au) {
+		} else if (jmap.b.jMap) {
 			GGeocoder = new GClientGeocoder();
 			GGeocoder.getLatLng(address, function(point){
 				if (!point) {
@@ -94,7 +97,7 @@
 		// Yahoo Maps
 		if (jmap._mapType) {
 			alert('Yahoo Maps Do Not Support Directions');
-		} else if (jmap.i.Au) { //Google Maps
+		} else if (jmap.b.jMap) { //Google Maps
 			var dirpanel = document.getElementById(panel);
 			directions = new GDirections(jmap, dirpanel);
 			directions.load(query);
@@ -269,7 +272,7 @@
 				});
 			}
 			jmap.addOverlay(marker);	// Add marker to map
-		} else if (jmap.i.Au) { // Google Maps
+		} else if (jmap.b.jMap) { // Google Maps
 			var marker = new GMarker(new GLatLng(pointlat,pointlng), { draggable: isdraggable } );
 			GEvent.addListener(marker, "click", function(){
 				marker.openInfoWindowHtml(pointhtml);
@@ -291,7 +294,7 @@
 		// Yahoo Maps
 		if (jmap._mapType) {
 			return	jmap.addOverlay(poly, colour, width, alpha);
-		} else if (jmap.i.Au) { // Google Maps	
+		} else if (jmap.b.jMap) { // Google Maps	
 			return jmap.addOverlay(poly);
 		}
 	},
@@ -305,7 +308,7 @@
 		if (jmap._mapType) {
 			var geoXml = new YGeoRSS(rssfile);
 			return jmap.addOverlay(geoXml);
-		} else if (jmap.i.Au) {  // Google Maps	
+		} else if (jmap.b.jMap) {  // Google Maps	
 			var geoXml = new GGeoXml(rssfile);
 			return jmap.addOverlay(geoXml);
 		}
