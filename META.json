@@ -1,0 +1,31 @@
+{
+	"name": "jQuery-jmaps",
+	"version": 1.4,
+	"author": [
+		"Tane Piper <digitalspaghetti@googlemail.com>"
+	],
+	"abstract": "Provides a simple API for using several mapping services within jQuery.",
+	"license": "mit, gpl",
+	"distribution_type": "plugin",
+	"requires": {
+		"jQuery": ">=1.1.2"
+	},
+	"provides": {
+		"jQuery.jMaps": {
+			"version": 1.4,
+			"file": "jquery.jmaps.js"
+		}
+	},
+	"keywords": [
+		"maps",
+		"google",
+		"yahoo",
+		"geocoding"
+	],
+	"stability": "In development",
+	"meta-spec": {
+		"version": 1.3,
+		"url": "http://module-build.sourceforge.net/META-spec-v1.3.html"
+	},
+	"generated_by": "Tane Piper"
+}
