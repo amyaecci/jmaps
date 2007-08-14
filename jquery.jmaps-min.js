@@ -2,7 +2,7 @@
  * Author: Tane Piper (digitalspaghetti at gmail dot com) 
  * With special thanks Dave Cardwell (who helped on getting the first version of this plugin to work).
  * Website: http://code.google.com/p/jmaps/
- * Licensed under the WTFPL License: http://sam.zoy.org/wtfpl/
+ * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
  * This plugin is not affiliated with Google or Yahoo.  
  * For Google Maps API and T&C see http://www.google.com/apis/maps/
  * For Yahoo! Maps API and T&C see http://developer.yahoo.com/maps/

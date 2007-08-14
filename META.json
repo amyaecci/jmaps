@@ -5,7 +5,7 @@
 		"Tane Piper <digitalspaghetti@googlemail.com>"
 	],
 	"abstract": "Provides a simple API for using several mapping services within jQuery.",
-	"license": "mit, gpl",
+	"license": "mit",
 	"distribution_type": "plugin",
 	"requires": {
 		"jQuery": ">=1.1.2"
@@ -13,7 +13,8 @@
 	"provides": {
 		"jQuery.jMaps": {
 			"version": 1.4,
-			"file": "jquery.jmaps.js"
+			"file": "jquery.jmaps.js",
+			"file": "jquery.jmaps-min.js"
 		}
 	},
 	"keywords": [
