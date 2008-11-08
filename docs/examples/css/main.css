@@ -1,0 +1,25 @@
+body {
+	font: 11px Arial, Helvetica, sans-serif;
+}
+
+
+/* Example Layout */
+.all-examples {
+	width: 90%;
+	margin:0 auto;
+}
+
+.example {
+	width: 70%;
+	margin:0 auto;
+}
+
+.example #address, .example #point, .example #query {
+	width: 60%;
+}
+
+.example .jmap {
+	height: 300px;
+	width: 68%;
+	margin:0 auto;
+}

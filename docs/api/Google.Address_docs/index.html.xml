@@ -1,0 +1,164 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Address.js">
+    <function name="SearchDirectionsCode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+        <description>A jMaps helper method that returns an friendly object based on the SearchDirections return code</description>
+        <parameters>
+            <parameter name="code" type="Number">
+                <description>The number of the code returned</description>
+            </parameter>
+        </parameters>
+        <return-types>
+            <return-type type="Object" />
+        </return-types>
+    </function>
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="SearchAddress" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>The SearchAddress function takes a map, options and callback function. The options can contain either an address string, to which a point is returned - or reverse geocoding a GLatLng, where an address is returned</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The jQuery object containing the map element.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>An object of options</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function that returns the result</description>
+                </parameter>
+            </parameters>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for SearchAddress</description>
+                <parameters>
+                    <parameter name="query" type="String">
+                        <description>The Address or GLatLng to query in the geocoder</description>
+                    </parameter>
+                    <parameter name="returnType" type="String">
+                        <description>The type of value you want to return from Google. This is mapped to the function names available, the options are &apos;getLatLng&apos; which returns coordinates, and &apos;getLocations&apos; which returns points.</description>
+                    </parameter>
+                    <parameter name="cache" type="GGeoCache">
+                        <description>The GGeoCache to store the results in if required</description>
+                    </parameter>
+                    <parameter name="countryCode" type="String">
+                        <description>The country code to localise results</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.SearchAddress.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;query&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;returnType&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                </property>
+                <property name="&apos;cache&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;countryCode&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                </property>
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="geoCoder" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="SearchDirections" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>The SearchDirections function allows you to search for directions between two or more points and return it to a map and a directions panel</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The jQuery object containing the map element.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>An object of options</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function that returns the result</description>
+                </parameter>
+            </parameters>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for SearchDirections</description>
+                <parameters>
+                    <parameter name="query" type="String">
+                        <description>The directions query to parse. Must contain one &apos;from:&apos; and one &apos;to:&apos; query, but can contain multiple &apos;to:&apos; queries.</description>
+                    </parameter>
+                    <parameter name="panel" type="String">
+                        <description>The ID of the panel that the directions will be sent to.</description>
+                    </parameter>
+                    <parameter name="local" type="String">
+                        <description>The local for the directions.</description>
+                    </parameter>
+                    <parameter name="travelMode" type="String">
+                        <description>Allows you to specify the travel mode, either &apos;driving&apos; or &apos;walking&apos;. Driving is the default.</description>
+                    </parameter>
+                    <parameter name="avoidHighways" type="Boolean">
+                        <description>Allows you to avoid Highways/Motorway&apos;s on trips. Please note this may not always be possible depending on the route.</description>
+                    </parameter>
+                    <parameter name="getPolyline" type="Boolean">
+                        <description>Decides if the returned result will draw a polyline on the map on the journey. Default is True.</description>
+                    </parameter>
+                    <parameter name="getSteps" type="Boolean">
+                        <description>Decides if the textual directions are returned to the directions panel.</description>
+                    </parameter>
+                    <parameter name="preserveViewport" type="Boolean">
+                        <description>Decides if the map will zoom and center in on the directions results.</description>
+                    </parameter>
+                    <parameter name="clearLastSearch" type="Boolean">
+                        <description>Clears the last direction search if you do not want to have multiple points.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.SearchDirections.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;query&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;panel&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;locale&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                </property>
+                <property name="&apos;travelMode&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                </property>
+                <property name="&apos;avoidHighways&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+                <property name="&apos;getPolyline&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+                <property name="&apos;getSteps&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+                <property name="&apos;preserveViewport&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+                <property name="&apos;clearLastSearch&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+            </function>
+            <function name="onLoad" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+            </function>
+            <function name="onError" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <object_literal name="queryOptions" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="&apos;locale&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;travelMode&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;avoidHighways&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;getPolyline&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;getSteps&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;preserveViewport&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </object_literal>
+            <property name="panel" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>

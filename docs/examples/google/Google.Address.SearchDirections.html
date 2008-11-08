@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Search Directions</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes searching for directions.</p>
+                <p>
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GDirections">Google Directions</a>
+                    allows you to pass multiple points to search for directions.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example: Searching directions.</h3>
+                <div id="map1" class="jmap"></div>
+                                <div id="directions1"></div>
+                <fieldset height="400px">
+                    <legend>Example: Searching directions</legend>
+                                        <span>Enter the query in the format <strong>From: [location] to: [location] to: [location]....</strong></span>
+                                        <br />
+                    <label for="query">Query: <input type="text" name="query" id="query" value="" /></label>
+                    <input id="query-submit-1" type="submit" value="Find Directions">
+                </fieldset>
+                
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+    jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+  
+    jQuery('#query-submit-1').click(function(){
+        jQuery('#map1').jmap('SearchDirections', {
+            'query': jQuery('#query').val(),
+            'panel':'#directions1'
+        }, function(result, options) {
+             console.log(result);
+             var valid = SearchCode(result.getStatus());
+             if (valid.success) {
+               jQuery.each(result.Placemark, function(i, point){
+                 jQuery('#map1').jmap('AddMarker',{
+                   'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                   'pointHTML':point.address
+                 });
+               });
+             } else {
+               jQuery('#address').val(valid.message);
+             }
+       });
+       return false;	
+    });
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+    <!-- Localhost Key-->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>
+    
+    <!-- map.ifies.org -->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>-->
+    
+    <script type="text/javascript" src="../../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../../dist/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+                    jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+          
+                    jQuery('#query-submit-1').click(function(){
+                        jQuery('#map1').jmap('SearchDirections', {
+                            'query': jQuery('#query').val(),
+                            'panel':'#directions1'
+                        }, function(result, options) {
+                                    console.log(result);
+                                    var valid = SearchCode(result.getStatus());
+                                    if (valid.success) {
+                                        jQuery.each(result.Placemark, function(i, point){
+                                            jQuery('#map1').jmap('AddMarker',{
+                                                'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                                                'pointHTML':point.address
+                                            });
+                                        });
+                   } else {
+                                            jQuery('#address').val(valid.message);
+                   }
+                });
+                return false;	
+            });
+                    });
+    </script>
+    
+    </body>
+</html>

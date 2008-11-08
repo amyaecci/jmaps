@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Search Address</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes searching for an address.</p>
+                <p>
+                    The <a href="http://code.google.com/apis/maps/documentation/reference.html#GClientGeocoder">Google Geocoder</a>
+                    supports both passing a string address and a <a href="http://code.google.com/apis/maps/documentation/reference.html#GLatLng">GLatLng</a>
+                    point.  Example 1 shows passing an address while Example 2 shows reverse geocoding with a GLatLng.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Passing an address string.</h3>
+                <div id="map1" class="jmap"></div>
+                <fieldset height="400px">
+                    <legend>Example: Address Search Form</legend>
+                    <label for="address">Address: <input type="text" name="address" id="address" value="1600 Amphitheatre Pky, Mountain View, CA" /></label>
+                    <input id="address-submit-1" type="submit" value="Find Address">
+                    <div class="error"></div>
+                </fieldset>
+                
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+    
+    jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+    
+    jQuery('#address-submit-1').click(function(){
+        jQuery('#map1').jmap('SearchAddress', {
+            'query': jQuery('#address').val(),
+            'returnType': 'getLocations'
+        }, function(result, options) {
+            
+            var valid = SearchCode(result.Status.code);
+            if (valid.success) {
+            jQuery.each(result.Placemark, function(i, point){
+                jQuery('#map1').jmap('AddMarker',{
+                        'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                        'pointHTML':point.address
+                    });
+                });
+            } else {
+                jQuery('#address').val(valid.message);
+            }
+        });
+        return false;	
+    });
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+        
+        <div class="example">
+                <h3>Example 2: Reverse Geocoding a point.</h3>
+                <div id="map2" class="jmap"></div>
+                <fieldset height="400px">
+                    <legend>Example: Reverse Geocode Point</legend>
+                    <label for="point">Point: <input type="text" name="point" id="point" value="37.4419, -122.1419" /></label>
+                    <input id="point-submit-1" type="submit" value="Find Address">
+                    <div class="error"></div>
+                </fieldset>
+                
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery('#point-submit-1').click(function(){
+    var points = jQuery('#point').val().split(',');
+    
+    jQuery('#map2').jmap('SearchAddress', {
+        'query': new GLatLng(points[0], points[1]),
+        'returnType': 'getLocations'
+    }, function(result, options) {
+                var valid = SearchCode(result.Status.code);
+                if (valid.success) {
+                    jQuery.each(result.Placemark, function(i, point){
+                    jQuery('#map2').jmap('AddMarker',{
+                            'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                            'pointHTML':point.address
+                        });
+                    });
+                } else {
+                    jQuery('#point').val(valid.message);
+                }
+        });
+        return false;	
+    });
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+    
+    <!-- Localhost Key-->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>
+    
+    <!-- map.ifies.org -->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>-->
+    
+    <script type="text/javascript" src="../../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../../dist/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            
+            jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+            
+            jQuery('#address-submit-1').click(function(){
+                jQuery('#map1').jmap('SearchAddress', {
+                    'query': jQuery('#address').val(),
+                    'returnType': 'getLocations'
+                }, function(result, options) {
+                    
+                    var valid = SearchCode(result.Status.code);
+                    if (valid.success) {
+                    jQuery.each(result.Placemark, function(i, point){
+                        jQuery('#map1').jmap('AddMarker',{
+                                'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                                'pointHTML':point.address
+                            });
+                        });
+                    } else {
+                        jQuery('#address').val(valid.message);
+                    }
+                });
+                return false;	
+            });
+            
+            jQuery('#point-submit-1').click(function(){
+                
+                var points = jQuery('#point').val().split(',');
+                
+                jQuery('#map2').jmap('SearchAddress', {
+                    'query': new GLatLng(points[0], points[1]),
+                    'returnType': 'getLocations'
+                }, function(result, options) {
+                    var valid = SearchCode(result.Status.code);
+                    if (valid.success) {
+                    jQuery.each(result.Placemark, function(i, point){
+                        jQuery('#map2').jmap('AddMarker',{
+                                'pointLatLng':[point.Point.coordinates[1], point.Point.coordinates[0]],
+                                'pointHTML':point.address
+                            });
+                        });
+                    } else {
+                        jQuery('#point').val(valid.message);
+                    }
+                });
+                return false;	
+            });
+        });
+    </script>
+    
+    </body>
+</html>

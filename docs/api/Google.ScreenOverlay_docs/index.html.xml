@@ -1,0 +1,56 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.ScreenOverlay.js">
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="AddScreenOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Adds a screen overlau to the selected map.</description>
+            <parameters>
+                <parameter name="element" type="Object">
+                </parameter>
+                <parameter name="options" type="Object">
+                </parameter>
+                <parameter name="callback" type="Function">
+                </parameter>
+            </parameters>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for AddScreenOverlay</description>
+                <aliases>
+                    <alias name="Mapifies.AddScreenOverlay.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                    <description>Default options for AddScreenOverlay</description>
+                    <aliases>
+                        <alias name="Mapifies.AddScreenOverlay.defaults" />                    </aliases>
+                </property>
+                <property name="&apos;screenXY&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+                <property name="&apos;overlayXY&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+                <property name="&apos;size&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="overlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="RemoveScreenOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Removes a screen overlay to the selected map.</description>
+            <parameters>
+                <parameter name="element" type="Object">
+                </parameter>
+                <parameter name="overlay" type="Object">
+                </parameter>
+                <parameter name="True" type="Boolean">
+                </parameter>
+            </parameters>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>

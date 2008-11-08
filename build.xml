@@ -1,0 +1,37 @@
+<project name="jMaps" default="Google" basedir=".">
+	<property description="Source Folder" name="SRC_DIR" value="org/ifies/map"  />
+    <property description="Files for parsing etc." name="BUILD_DIR" value="build" />
+    <property description="Rhino JS Engine" name="JAR" value="${BUILD_DIR}/js.jar" />
+    <property description="Destination Folder" name="DIST_DIR" value="dist" />
+
+    <!-- Files names for distribution -->
+    <property name="Google" value="${DIST_DIR}/jquery.jmap.js" />
+    <!-- MAIN -->
+
+    <target name="Google" description="Main jMap build, concatenates source files and replaces @VERSION">
+        <echo message="Building ${Google}" />
+        <mkdir dir="${DIST_DIR}" />
+        <concat destfile="${Google}">
+            <fileset dir="${SRC_DIR}/google" includes="Google.Core.js" />
+            <fileset dir="${SRC_DIR}/google" includes="Google.Address.js" />
+            <fileset dir="${SRC_DIR}/google" includes="Google.AdsManager.js" />
+            <fileset dir="${SRC_DIR}/google" includes="Google.GeoXML.js" />
+            <fileset dir="${SRC_DIR}/google" includes="Google.GroundOverlay.js" />
+            <fileset dir="${SRC_DIR}/google" includes="Google.Markers.js" />
+			<fileset dir="${SRC_DIR}/google" includes="Google.Polygon.js" />
+			<fileset dir="${SRC_DIR}/google" includes="Google.Polyline.js" />
+			<fileset dir="${SRC_DIR}/google" includes="Google.ScreenOverlay.js" />
+			<fileset dir="${SRC_DIR}/google" includes="Google.Streetview.js" />
+			<fileset dir="${SRC_DIR}/google" includes="Google.Traffic.js" />
+			<fileset dir="${SRC_DIR}" includes="Mapifies.jQuery.Alias.js" />
+        </concat>
+    	<java jar="${JAR}" fork="true">
+            <arg value="${Google}" />
+        </java>
+        <echo message="${Google} built." />
+    </target>
+
+    <target name="clean">
+        <delete dir="${DIST_DIR}" />
+    </target>
+</project>

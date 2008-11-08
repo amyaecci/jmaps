@@ -1,0 +1,80 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.AdsManager.js">
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="CreateAdsManager" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Create an adsense ads manager for the map. The Adsense manager will parse your page and show adverts on the map that relate to this. Requires your adsense publisher id and channel</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The jQuery object containing the map element.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>An object of options</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function that returns the result</description>
+                </parameter>
+            </parameters>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for CreateAdsManager</description>
+                <parameters>
+                    <parameter name="publisherId" type="String">
+                        <description>Your Adsense publisher ID</description>
+                    </parameter>
+                    <parameter name="maxAdsOnMap" type="Number">
+                        <description>The maximum number of ads to show on the map at one time</description>
+                    </parameter>
+                    <parameter name="channel" type="Number">
+                        <description>The AdSense channel this belongs to</description>
+                    </parameter>
+                    <parameter name="minZoomLevel" type="Number">
+                        <description>The minimum zoom level to begin showing ads at</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.CreateAdsManager.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                    <description>Default options for CreateAdsManager</description>
+                    <parameters>
+                        <parameter name="publisherId" type="String">
+                            <description>Your Adsense publisher ID</description>
+                        </parameter>
+                        <parameter name="maxAdsOnMap" type="Number">
+                            <description>The maximum number of ads to show on the map at one time</description>
+                        </parameter>
+                        <parameter name="channel" type="Number">
+                            <description>The AdSense channel this belongs to</description>
+                        </parameter>
+                        <parameter name="minZoomLevel" type="Number">
+                            <description>The minimum zoom level to begin showing ads at</description>
+                        </parameter>
+                    </parameters>
+                    <aliases>
+                        <alias name="Mapifies.CreateAdsManager.defaults" />                    </aliases>
+                </property>
+                <property name="&apos;maxAdsOnMap&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                </property>
+                <property name="&apos;channel&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                </property>
+                <property name="&apos;minZoomLevel&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                </property>
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <object_literal name="adsOptions" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="&apos;maxAdsOnMap&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;channel&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;minZoomLevel&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </object_literal>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>

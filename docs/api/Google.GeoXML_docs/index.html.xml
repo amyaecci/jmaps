@@ -1,0 +1,70 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.GeoXML.js">
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="AddFeed" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to pass a GeoXML or KML feed to a Google map.</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
+                </parameter>
+                <parameter name="callback" type="Object">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.AddFeed" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for AddFeed</description>
+                <parameters>
+                    <parameter name="feedUrl" type="String">
+                        <description>The URL of the GeoXML or KML feed.</description>
+                    </parameter>
+                    <parameter name="mapCenter" type="Object">
+                        <description>An array with a lat/lng position to center the map on</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.AddFeed.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;feedUrl&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;mapCenter&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="feed" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="RemoveFeed" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to pass a GeoXML or KML feed to a Google map.</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="feed" type="GGeoXML">
+                    <description>The feed to remove from the map</description>
+                </parameter>
+                <parameter name="callback" type="Object">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveFeed" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>
