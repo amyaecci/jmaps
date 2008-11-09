@@ -6,40 +6,46 @@
  * @alias Mapifies.AddMarker
  * @param {jQuery} element The element to initialise the map on.
  * @param {Object} options The object that contains the options.
- * @param {Object} callback The callback function to pass out after initialising the map.
+ * @param {Function} callback The callback function to pass out after initialising the map.
  * @return {Function} callback The callback option with the marker object and options.
  */
 Mapifies.AddMarker = function ( element, options, callback ) {
-	
+	/**
+	 * Default options for AddGroundOverlay
+	 * @method
+	 * @namespace Mapifies.AddGroundOverlay
+	 * @id Mapifies.AddGroundOverlay.defaults
+	 * @alias Mapifies.AddGroundOverlay.defaults
+	 * @param {Object} pointLatLng The Lat/Lng coordinates of the marker.
+	 * @param {String} pointHTML The HTML to appear in the markers info window.
+	 * @param {String} pointOpenHTMLEvent The javascript event type to open the marker info window.  Default is 'click'.
+	 * @param {Boolean} pointIsDraggable Defines if the point is draggable by the end user.  Default false.
+	 * @param {Boolean} pointIsRemovable Defines if the point can be removed by the user.  Default false.
+	 * @param {Boolean} pointRemoveEvent The event type to remove a marker.  Default 'dblclick'.
+	 * @param {Number} pointMinZoom The minimum zoom level to display the marker if using a marker manager.
+	 * @param {Number} pointMaxZoom The maximum zoom level to display the marker if using a marker manager.
+	 * @param {GIcon} pointIcon A GIcon to display instead of the standard marker graphic.
+	 * @param {Boolean} centerMap Automatically center the map on the new marker.  Default false.
+	 * @return {Object} The options for AddGroundOverlay
+	 */
 	function defaults() {
 		var values = {
-			// Point lat & lng
-			pointLatLng: [],
-			// Point HTML for infoWindow
-			pointHTML: null,
-			// Event to open infoWindow (click, dblclick, mouseover, etc)
-			pointOpenHTMLEvent: "click",
-			// Point is draggable?
-			pointIsDraggable: false,
-			// Point is removable?
-			pointIsRemovable: false,
-			// Event to remove on (click, dblclick, mouseover, etc)
-			pointRemoveEvent: "dblclick",
-			// These two are only required if adding to the marker manager
-			pointMinZoom: 4,
-			pointMaxZoom: 17,
-			// Optional Icon to pass in (not yet implemented)
-			pointIcon: null,
-			// For maximizing infoWindows (not yet implemented)
-			pointMaxContent: null,
-			pointMaxTitle: null,
-			centerMap: false
+			'pointLatLng': undefined,
+			'pointHTML': undefined,
+			'pointOpenHTMLEvent': 'click',
+			'pointIsDraggable': false,
+			'pointIsRemovable': false,
+			'pointRemoveEvent': 'dblclick',
+			'pointMinZoom': 4,
+			'pointMaxZoom': 17,
+			'pointIcon': undefined,
+			'centerMap': false
 		};
 		return values;
 	};
-	
 	var thisMap = Mapifies.MapObjects.Get(element);
 	options = jQuery.extend({}, defaults(), options);
+	
 	var markerOptions = {}
 	
 	if (typeof options.pointIcon == 'object')
@@ -79,27 +85,55 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 
 
 /**
- * Removes the specificed marker on the passed map
- * @param {Object} element
- * @param {Object} marker
- * @return {Boolean}
+ * This function allows you to remove markers from the map
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.RemoveMarker
+ * @alias Mapifies.RemoveMarker
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GMarker} options The marker to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the marker object.
  */
-Mapifies.RemoveMarker = function (element, marker ) {
+Mapifies.RemoveMarker = function ( element, marker, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(marker);
+	if (typeof callback === 'function') return callback(marker);
 	return;
 };
 
+/**
+ * This function allows you to create a marker manager to store and manage any markers created on the map.  Google recommends not using this marker manager and instead using the open source one.
+ * @method
+ * @deprecated
+ * @namespace Mapifies
+ * @id Mapifies.CreateMarkerManager
+ * @alias Mapifies.CreateMarkerManager
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GMarker} options The marker to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the marker object and options.
+ */
 Mapifies.CreateMarkerManager = function(element, options, callback) {
-	
+	/**
+	 * Default options for CreateMarkerManager
+	 * @method
+	 * @namespace Mapifies.CreateMarkerManager
+	 * @id Mapifies.CreateMarkerManager.defaults
+	 * @alias Mapifies.CreateMarkerManager.defaults
+	 * @param {Number} borderPadding Specifies, in pixels, the extra padding outside the map's current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.
+	 * @param {Number} maxZoom The maximum zoom level to show markers at
+	 * @param {Boolean} trackMarkers Indicates whether or not a marker manager should track markers' movements.
+	 * @return {Object} The options for CreateMarkerManager
+	 */
 	function defaults() {
 		return {
 			// Border Padding in pixels
-			borderPadding: 100,
+			'borderPadding': 100,
 			// Max zoom level 
-			maxZoom: 17,
+			'maxZoom': 17,
 			// Track markers
-			trackMarkers: false
+			'trackMarkers': false
 		}
 	}
 	var thisMap = Mapifies.MapObjects.Get(element);
@@ -108,5 +142,5 @@ Mapifies.CreateMarkerManager = function(element, options, callback) {
 	Mapifies.MapObjects.Append(element, 'MarkerManager',markerManager);
 
 	// Return the callback
-	if (typeof callback == 'function') return callback( options );
+	if (typeof callback == 'function') return callback( markerManager, options );
 };

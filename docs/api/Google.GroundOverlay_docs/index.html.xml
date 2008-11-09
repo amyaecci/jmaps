@@ -1,30 +1,46 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.GroundOverlay.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
         <function name="AddGroundOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Adds an ground overlay image to the selected map</description>
+            <description>This function allows you to add a ground overlay to a map</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
                 <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
                 </parameter>
                 <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.AddGroundOverlay" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>
             <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
                 <description>Default options for AddGroundOverlay</description>
+                <parameters>
+                    <parameter name="overlaySouthWestBounds" type="Object">
+                        <description>The coordinates of the South West bounds of the image</description>
+                    </parameter>
+                    <parameter name="overlayNorthEastBounds" type="Object">
+                        <description>The coordinates of the North East bounds of the image</description>
+                    </parameter>
+                    <parameter name="overlayImage" type="String">
+                        <description>The URL of the image to be loaded</description>
+                    </parameter>
+                </parameters>
                 <aliases>
                     <alias name="Mapifies.AddGroundOverlay.defaults" />                </aliases>
                 <return-types>
                     <return-type type="Object" />
                 </return-types>
-                <property name="overlaySouthWestBounds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                <property name="&apos;overlaySouthWestBounds&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
-                <property name="overlayNorthEastBounds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                <property name="&apos;overlayNorthEastBounds&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
-                <property name="overlayImage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                <property name="&apos;overlayImage&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
             </function>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
@@ -34,16 +50,23 @@
             <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
-        <function name="RemoveGroundOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Boolean">
-            <description>Removes an ground overlay image to the selected map</description>
+        <function name="RemoveGroundOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function removes an existing ground overlay</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
-                <parameter name="groundOverlay" type="Object">
+                <parameter name="groundOverlay" type="GGroundOverlay">
+                    <description>The ground overlay to remove.</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveGroundOverlay" />            </aliases>
             <return-types>
-                <return-type type="Boolean" />
+                <return-type type="Function" />
             </return-types>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>

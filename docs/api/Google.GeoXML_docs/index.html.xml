@@ -9,7 +9,7 @@
                 <parameter name="options" type="Object">
                     <description>The object that contains the options.</description>
                 </parameter>
-                <parameter name="callback" type="Object">
+                <parameter name="callback" type="Fucntion">
                     <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
@@ -46,7 +46,7 @@
             </property>
         </function>
         <function name="RemoveFeed" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>This function allows you to pass a GeoXML or KML feed to a Google map.</description>
+            <description>This function allows you to remove a GeoXML or KML feed from a Google map.</description>
             <parameters>
                 <parameter name="element" type="jQuery">
                     <description>The element to initialise the map on.</description>
@@ -54,7 +54,7 @@
                 <parameter name="feed" type="GGeoXML">
                     <description>The feed to remove from the map</description>
                 </parameter>
-                <parameter name="callback" type="Object">
+                <parameter name="callback" type="Function">
                     <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>

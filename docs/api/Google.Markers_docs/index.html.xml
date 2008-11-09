@@ -1,43 +1,117 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Markers.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
         <function name="AddMarker" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Adds a marker to the selected map with the passed options</description>
+            <description>This function allows you to add markers to the map with several options</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
                 <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
                 </parameter>
-                <parameter name="callback" type="Object">
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.AddMarker" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>
-            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-                <object_literal name="values" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
-                    <property name="pointLatLng" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for AddGroundOverlay</description>
+                <parameters>
+                    <parameter name="pointLatLng" type="Object">
+                        <description>The Lat/Lng coordinates of the marker.</description>
+                    </parameter>
+                    <parameter name="pointHTML" type="String">
+                        <description>The HTML to appear in the markers info window.</description>
+                    </parameter>
+                    <parameter name="pointOpenHTMLEvent" type="String">
+                        <description>The javascript event type to open the marker info window. Default is &apos;click&apos;.</description>
+                    </parameter>
+                    <parameter name="pointIsDraggable" type="Boolean">
+                        <description>Defines if the point is draggable by the end user. Default false.</description>
+                    </parameter>
+                    <parameter name="pointIsRemovable" type="Boolean">
+                        <description>Defines if the point can be removed by the user. Default false.</description>
+                    </parameter>
+                    <parameter name="pointRemoveEvent" type="Boolean">
+                        <description>The event type to remove a marker. Default &apos;dblclick&apos;.</description>
+                    </parameter>
+                    <parameter name="pointMinZoom" type="Number">
+                        <description>The minimum zoom level to display the marker if using a marker manager.</description>
+                    </parameter>
+                    <parameter name="pointMaxZoom" type="Number">
+                        <description>The maximum zoom level to display the marker if using a marker manager.</description>
+                    </parameter>
+                    <parameter name="pointIcon" type="GIcon">
+                        <description>A GIcon to display instead of the standard marker graphic.</description>
+                    </parameter>
+                    <parameter name="centerMap" type="Boolean">
+                        <description>Automatically center the map on the new marker. Default false.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.AddGroundOverlay.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <object_literal name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                    <description>Default options for AddGroundOverlay</description>
+                    <parameters>
+                        <parameter name="pointLatLng" type="Object">
+                            <description>The Lat/Lng coordinates of the marker.</description>
+                        </parameter>
+                        <parameter name="pointHTML" type="String">
+                            <description>The HTML to appear in the markers info window.</description>
+                        </parameter>
+                        <parameter name="pointOpenHTMLEvent" type="String">
+                            <description>The javascript event type to open the marker info window. Default is &apos;click&apos;.</description>
+                        </parameter>
+                        <parameter name="pointIsDraggable" type="Boolean">
+                            <description>Defines if the point is draggable by the end user. Default false.</description>
+                        </parameter>
+                        <parameter name="pointIsRemovable" type="Boolean">
+                            <description>Defines if the point can be removed by the user. Default false.</description>
+                        </parameter>
+                        <parameter name="pointRemoveEvent" type="Boolean">
+                            <description>The event type to remove a marker. Default &apos;dblclick&apos;.</description>
+                        </parameter>
+                        <parameter name="pointMinZoom" type="Number">
+                            <description>The minimum zoom level to display the marker if using a marker manager.</description>
+                        </parameter>
+                        <parameter name="pointMaxZoom" type="Number">
+                            <description>The maximum zoom level to display the marker if using a marker manager.</description>
+                        </parameter>
+                        <parameter name="pointIcon" type="GIcon">
+                            <description>A GIcon to display instead of the standard marker graphic.</description>
+                        </parameter>
+                        <parameter name="centerMap" type="Boolean">
+                            <description>Automatically center the map on the new marker. Default false.</description>
+                        </parameter>
+                    </parameters>
+                    <aliases>
+                        <alias name="Mapifies.AddGroundOverlay.defaults" />                    </aliases>
+                    <property name="&apos;pointLatLng&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                     </property>
-                    <property name="pointHTML" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                    <property name="&apos;pointHTML&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                     </property>
-                    <property name="pointOpenHTMLEvent" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                    <property name="&apos;pointOpenHTMLEvent&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                     </property>
-                    <property name="pointIsDraggable" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                    <property name="&apos;pointIsDraggable&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
                     </property>
-                    <property name="pointIsRemovable" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                    <property name="&apos;pointIsRemovable&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
                     </property>
-                    <property name="pointRemoveEvent" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                    <property name="&apos;pointRemoveEvent&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                     </property>
-                    <property name="pointMinZoom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                    <property name="&apos;pointMinZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                     </property>
-                    <property name="pointMaxZoom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                    <property name="&apos;pointMaxZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                     </property>
-                    <property name="pointIcon" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                    <property name="&apos;pointIcon&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                     </property>
-                    <property name="pointMaxContent" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
-                    </property>
-                    <property name="pointMaxTitle" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
-                    </property>
-                    <property name="centerMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                    <property name="&apos;centerMap&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
                     </property>
                 </object_literal>
             </function>
@@ -50,27 +124,68 @@
             <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
-        <function name="RemoveMarker" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Boolean">
-            <description>Removes the specificed marker on the passed map</description>
+        <function name="RemoveMarker" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to remove markers from the map</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
-                <parameter name="marker" type="Object">
+                <parameter name="options" type="GMarker">
+                    <description>The marker to be removed</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveMarker" />            </aliases>
             <return-types>
-                <return-type type="Boolean" />
+                <return-type type="Function" />
             </return-types>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
-        <function name="CreateMarkerManager" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-                <property name="borderPadding" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+        <function name="CreateMarkerManager" scope="static" constructor="false" deprecated="true" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to create a marker manager to store and manage any markers created on the map. Google recommends not using this marker manager and instead using the open source one.</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="GMarker">
+                    <description>The marker to be removed</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.CreateMarkerManager" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for CreateMarkerManager</description>
+                <parameters>
+                    <parameter name="borderPadding" type="Number">
+                        <description>Specifies, in pixels, the extra padding outside the map&apos;s current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.</description>
+                    </parameter>
+                    <parameter name="maxZoom" type="Number">
+                        <description>The maximum zoom level to show markers at</description>
+                    </parameter>
+                    <parameter name="trackMarkers" type="Boolean">
+                        <description>Indicates whether or not a marker manager should track markers&apos; movements.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.CreateMarkerManager.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;borderPadding&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
-                <property name="maxZoom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                <property name="&apos;maxZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
-                <property name="trackMarkers" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                <property name="&apos;trackMarkers&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
                 </property>
             </function>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">

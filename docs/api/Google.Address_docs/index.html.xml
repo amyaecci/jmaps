@@ -1,5 +1,5 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Address.js">
-    <function name="SearchDirectionsCode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+    <function name="SearchCode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
         <description>A jMaps helper method that returns an friendly object based on the SearchDirections return code</description>
         <parameters>
             <parameter name="code" type="Number">

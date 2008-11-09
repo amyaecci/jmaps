@@ -191,7 +191,7 @@
                 <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
             </function>
-            <function name="Append" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+            <function name="Append" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
                 <description>Adds additional objects and functions to an existing MapObject</description>
                 <parameters>
                     <parameter name="element" type="jQuery">
@@ -206,9 +206,6 @@
                 </parameters>
                 <aliases>
                     <alias name="Mapifies.MapObjects.Append" />                </aliases>
-                <return-types>
-                    <return-type type="Object" />
-                </return-types>
                 <property name="mapName" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
             </function>

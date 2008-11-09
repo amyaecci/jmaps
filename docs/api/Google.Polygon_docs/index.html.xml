@@ -1,22 +1,71 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Polygon.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
-        <function name="AddPolygon" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-                <property name="polygonPoints" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+        <function name="AddPolygon" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to add a polygon to a map using GLatLng points</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.AddPolygon" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for AddPolygon</description>
+                <parameters>
+                    <parameter name="polygonPoints" type="Object">
+                        <description>An array of Lat/Lng points that make up the vertexes of the polygon.</description>
+                    </parameter>
+                    <parameter name="polygonStrokeColor" type="String">
+                        <description>The stroke colour for the polygon.</description>
+                    </parameter>
+                    <parameter name="polygonStrokeWeight" type="Number">
+                        <description>The thickness of the polygon line.</description>
+                    </parameter>
+                    <parameter name="polygonStrokeOpacity" type="Number">
+                        <description>A value from 0 to 1 of for the line opacity.</description>
+                    </parameter>
+                    <parameter name="polygonFillColor" type="String">
+                        <description>The colour of the fill area for the polygon.</description>
+                    </parameter>
+                    <parameter name="polygonFillOpacity" type="Number">
+                        <description>The value from 0 to 1 for the polygon fill opacity.</description>
+                    </parameter>
+                    <parameter name="mapCenter" type="Object">
+                        <description>An array containing the LatLng point to center on.</description>
+                    </parameter>
+                    <parameter name="polygonClickable" type="Boolean">
+                        <description>Defines if the polygon is clickable or not. Default true.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.AddPolygon.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;polygonPoints&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
                 </property>
-                <property name="polygonStrokeColor" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                <property name="&apos;polygonStrokeColor&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                 </property>
-                <property name="polygonStrokeWeight" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                <property name="&apos;polygonStrokeWeight&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
-                <property name="polygonStrokeOpacity" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                <property name="&apos;polygonStrokeOpacity&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
-                <property name="polygonFillColor" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                <property name="&apos;polygonFillColor&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                 </property>
-                <property name="polygonFillOpacity" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                <property name="&apos;polygonFillOpacity&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
-                <property name="mapCenter" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                <property name="&apos;mapCenter&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
-                <property name="polygonClickable" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                <property name="&apos;polygonClickable&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
                 </property>
             </function>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
@@ -30,7 +79,24 @@
             <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
-        <function name="RemovePolygon" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+        <function name="RemovePolygon" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to remove a polygon from the map</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="polygon" type="GPolygon">
+                    <description>The polygon to be removed</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.RemovePolygon" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
