@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Adding and Removing Markers</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes adding and removing markers from your map.</p>
+                <p>
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GMarker">Google markers</a>
+                    allows you to define and add a marker to any position on the map.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Simple Adding and Removing Markers.</h3>
+                <div id="map1" class="jmap"></div>
+								<p align="center"><a href="#" class="add-marker">Add Marker</a> | <a href="#" class="remove-marker">Remove Marker</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+	
+	jQuery('.add-marker').click(function(){
+		jQuery('#map1').jmap('AddMarker', {
+			'pointLatLng': [37.4419, -122.1419],
+			'pointHTML': '&lt;strong>This was added with jMaps&lt;/strong>'
+		}, function( marker, options){
+			jQuery('.remove-marker').click(function(){
+				jQuery('#map1').jmap('RemoveMarker', marker);
+			});
+		});
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+				
+				<div class="example">
+                <h3>Example 2: Adding marker events.</h3>
+                <div id="map2" class="jmap"></div>
+								<p align="center"><a href="#" class="add-marker-2">Add Marker</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('.add-marker-2').click(function(){
+		jQuery('#map2').jmap('AddMarker', {
+			'pointLatLng': [37.4419, -122.1419],
+			'pointHTML': '&lt;strong>You can drag me.&lt;br />Double Click Me to Remove Me!&lt;/strong>',
+			'pointIsRemovable':true,
+			'pointIsDraggable':true
+		});
+		return false;
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+    <!-- Localhost Key-->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>
+    
+    <!-- map.ifies.org -->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>-->
+    
+    <script type="text/javascript" src="../../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../../dist/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+					jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+					
+					jQuery('.add-marker').click(function(){
+						jQuery('#map1').jmap('AddMarker', {
+							'pointLatLng': [37.4419, -122.1419],
+							'pointHTML': '<strong>This was added with jMaps</strong>'
+						}, function( marker, options){
+							jQuery('.remove-marker').click(function(){
+								jQuery('#map1').jmap('RemoveMarker', marker);
+							});
+						});
+						return false;
+					});
+					
+					jQuery('.add-marker-2').click(function(){
+						jQuery('#map2').jmap('AddMarker', {
+							'pointLatLng': [37.4419, -122.1419],
+							'pointHTML': '<strong>You can drag me.<br />Double Click Me to Remove Me!</strong>',
+							'pointIsRemovable':true,
+							'pointIsDraggable':true
+						});
+						return false;
+					});
+       	});
+    </script>
+    
+    </body>
+</html>

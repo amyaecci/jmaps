@@ -1,28 +1,28 @@
-
 /**
- * Adds a traffic layer to the selected map.
- * @id Mapifies.AddTrafficInfo
- * @param {Object} element
- * @param {Object} options
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+ * This function allows you to add a Google Traffic Layer
  * @method
  * @namespace Mapifies
+ * @id Mapifies.AddTrafficInfo
+ * @alias Mapifies.AddTrafficInfo
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the traffic layer.
  */
 Mapifies.AddTrafficInfo = function( element, options, callback) {
-	
 	/**
 	 * Default options for AddTrafficInfo
-	 * @id Mapifies.AddTrafficInfo.defaults
-	 * @alias Mapifies.AddTrafficInfo.defaults
-	 * @return {Object} The options for AddTrafficInfo
 	 * @method
 	 * @namespace Mapifies.AddTrafficInfo
+	 * @id Mapifies.AddTrafficInfo.defaults
+	 * @alias Mapifies.AddTrafficInfo.defaults
+	 * @param {Object} mapCenter The Lat/Lng to center the map on
+	 * @return {Object} The options for AddTrafficInfo
 	 */
 	function defaults() {
 		return {
 			// Center the map on this point (optional)
-			mapCenter: []
+			'mapCenter': []
 		};
 	};
 	var thisMap = Mapifies.MapObjects.Get(element);
@@ -40,14 +40,19 @@ Mapifies.AddTrafficInfo = function( element, options, callback) {
 };
 
 /**
- * Removes a traffic layer to the selected map.
+ * This function allows you to remove a traffic layer from the map
+ * @method
+ * @namespace Mapifies
  * @id Mapifies.RemoveTrafficInfo
- * @param {Object} element
- * @param {Object} trafficOverlay
- * @param {Boolean} True
+ * @alias Mapifies.RemoveTrafficInfo
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GTrafficOverlay} trafficOverlay The traffic overlay to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the traffic overlay.
  */
-Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay ) {
+Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(trafficOverlay);
+	if (typeof callback === 'function') return callback(trafficOverlay);
 	return;
 };

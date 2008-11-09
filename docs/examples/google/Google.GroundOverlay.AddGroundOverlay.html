@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <title>jMaps Examples: Add a GeoFeed</title>
+        <title>jMaps Examples: Ground Overlay</title>
         <link rel="stylesheet" media="screen" href="../css/main.css" />
     </head>
     <body>
@@ -12,31 +12,27 @@
         <div class="all-examples">
             
             <div class="all-example-description">
-                <p>This example shows you how easily jQuery + jMaps makes adding a Geo feed.</p>
+                <p>This example shows you how easily jQuery + jMaps makes adding a ground overlay to your map.</p>
                 <p>
-                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GGeoXml">Google GeoXML and KML</a>
-                    allows you to add a feed of points to a map.
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GGroundOverlay">Google ground overlays</a>
+                    allows you to add a graphic to a map at a defined position.
                 </p>
             </div>
             
             <div class="example">
-                <h3>Example: Add a GeoFeed.</h3>
+                <h3>Example: Ground Overlay.</h3>
                 <div id="map1" class="jmap"></div>
-								<p align="center"><a href="#" class="add-feed">Add Feed</a> | <a href="#" class="remove-feed">Remove Feed</a></p>
+								       
                 <div class="example-code">
                     <pre>
                         <code>
 jQuery(document).ready(function(){
-	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[55.958639, -3.162516]});
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.736216,-74.193393]});
 	
-	jQuery('.add-feed').click(function(){
-		jQuery('#map1').jmap('AddFeed', {
-			'feedUrl':'http://api.flickr.com/services/feeds/geo/?id=84656963@N00&lang=en-us&format=rss_200'
-		}, function(feed, options){
-			jQuery('.remove-feed').click(function(){
-				jQuery('#map1').jmap('RemoveFeed', feed);
-			})
-		});
+	jQuery('#map1').jmap("AddGroundOverlay", {
+		'overlaySouthWestBounds': [40.716216,-74.213393],
+		'overlayNorthEastBounds': [40.765641,-74.139235],
+		'overlayImage': "http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg"
 	});
 });
                         </code>
@@ -54,18 +50,14 @@ jQuery(document).ready(function(){
     
     <script type="text/javascript">
         jQuery(document).ready(function(){
-					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[55.958639, -3.162516]});
+					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.736216,-74.193393]});
 					
-					jQuery('.add-feed').click(function(){
-						jQuery('#map1').jmap('AddFeed', {
-							'feedUrl':'http://api.flickr.com/services/feeds/geo/?id=84656963@N00&lang=en-us&format=rss_200'
-						}, function(feed, options){
-							jQuery('.remove-feed').click(function(){
-								jQuery('#map1').jmap('RemoveFeed', feed);
-							})
-						});
+					jQuery('#map1').jmap("AddGroundOverlay", {
+						'overlaySouthWestBounds': [40.716216,-74.213393],
+						'overlayNorthEastBounds': [40.765641,-74.139235],
+						'overlayImage': "http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg"
 					});
-        });
+       	});
     </script>
     
     </body>

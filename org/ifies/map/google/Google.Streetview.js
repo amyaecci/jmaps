@@ -1,5 +1,26 @@
+/**
+ * This function allows you to add a Google Streetview
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.CreateStreetviewPanorama
+ * @alias Mapifies.CreateStreetviewPanorama
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the street view.
+ */
 Mapifies.CreateStreetviewPanorama = function( element, options, callback ) {
-	
+	/**
+	 * Default options for CreateStreetviewPanorama
+	 * @method
+	 * @namespace Mapifies.CreateStreetviewPanorama
+	 * @id Mapifies.CreateStreetviewPanorama.defaults
+	 * @alias Mapifies.CreateStreetviewPanorama.defaults
+	 * @param {String} overideContainer A ID of a div to put the street view into, otherwise it will default to the map.
+	 * @param {Object} latlng The starting Lat/Lng of the streetview - this is required.
+	 * @param {Object} pov The point of view to initialse the map on.  This is 3 values, X/Y/Z
+	 * @return {Object} The options for CreateStreetviewPanorama
+	 */
 	function defaults() {
 		return {
 			'overideContainer':'',
@@ -32,11 +53,15 @@ Mapifies.CreateStreetviewPanorama = function( element, options, callback ) {
 };
 
 /**
- * Removes the specificed feed on the passed map
- * @param {Object} element
- * @param {Object} feed
- * @param {Object} callback
- * @return {Function}
+ * This function allows you to remove a street view from the map
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.RemoveStreetviewPanorama
+ * @alias Mapifies.RemoveStreetviewPanorama
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GStreetView} view The view to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the view.
  */
 Mapifies.RemoveStreetviewPanorama = function ( element, view, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);

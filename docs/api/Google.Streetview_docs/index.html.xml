@@ -1,8 +1,56 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Streetview.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
-        <function name="CreateStreetviewPanorama" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
-                <property name="&apos;overideContainer&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+        <function name="CreateStreetviewPanorama" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to add a Google Streetview</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.CreateStreetviewPanorama" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for CreateStreetviewPanorama</description>
+                <parameters>
+                    <parameter name="overideContainer" type="String">
+                        <description>A ID of a div to put the street view into, otherwise it will default to the map.</description>
+                    </parameter>
+                    <parameter name="latlng" type="Object">
+                        <description>The starting Lat/Lng of the streetview - this is required.</description>
+                    </parameter>
+                    <parameter name="pov" type="Object">
+                        <description>The point of view to initialse the map on. This is 3 values, X/Y/Z</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.CreateStreetviewPanorama.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                    <description>Default options for CreateStreetviewPanorama</description>
+                    <parameters>
+                        <parameter name="overideContainer" type="String">
+                            <description>A ID of a div to put the street view into, otherwise it will default to the map.</description>
+                        </parameter>
+                        <parameter name="latlng" type="Object">
+                            <description>The starting Lat/Lng of the streetview - this is required.</description>
+                        </parameter>
+                        <parameter name="pov" type="Object">
+                            <description>The point of view to initialse the map on. This is 3 values, X/Y/Z</description>
+                        </parameter>
+                    </parameters>
+                    <aliases>
+                        <alias name="Mapifies.CreateStreetviewPanorama.defaults" />                    </aliases>
                 </property>
                 <property name="&apos;latlng&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
                 </property>
@@ -21,15 +69,20 @@
             </property>
         </function>
         <function name="RemoveStreetviewPanorama" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Removes the specificed feed on the passed map</description>
+            <description>This function allows you to remove a street view from the map</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
-                <parameter name="feed" type="Object">
+                <parameter name="view" type="GStreetView">
+                    <description>The view to be removed</description>
                 </parameter>
-                <parameter name="callback" type="Object">
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveStreetviewPanorama" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>

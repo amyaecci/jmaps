@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Adding and Removing Streetview</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes adding and removing streetviews from your map.</p>
+                <p>
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GStreetviewPanorama">Google streetview</a>
+                    allows you to define and add a flash-based streetview panorama to your map.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Simple Adding and Removing A Streetview.</h3>
+                <div id="map1" class="jmap"></div>
+								<p align="center"><a href="#" class="add-streetview">Show Streetview</a> | <a href="#" class="remove-streetview">Hide Streetview</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+
+	var streetMapCenter = [40.74569634433956,-73.99635314941406];
+	
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':streetMapCenter});
+	
+	jQuery('.add-streetview').click(function(){
+		jQuery('#map1').jmap('CreateStreetviewPanorama', {
+			'latlng':streetMapCenter
+		}, function (view, options){
+			jQuery('.remove-streetview').click(function(){
+				jQuery('#map1').jmap('RemoveStreetviewPanorama', view);
+				jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+				return false;
+			});
+		});
+		return false;
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+				
+			<div class="example">
+                <h3>Example 2: Adding a Streetview to another DIV.</h3>
+                <div id="map2" class="jmap"></div>
+								<div id="streetview"></div>
+								<p align="center"><a href="#" class="add-streetview-2">Add Streetview</a> | <a href="#" class="remove-streetview-2">Remove Streetview</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+
+	var streetMapCenter = [40.74569634433956,-73.99635314941406];
+
+	jQuery('#map2').jmap('init', {'mapType':'hybrid','mapCenter':streetMapCenter});
+	jQuery('.add-streetview-2').click(function(){
+		jQuery('#map2').jmap('CreateStreetviewPanorama', {
+			'latlng':streetMapCenter,
+			'overideContainer': '#streetview'
+		}, function (view, options){
+			jQuery('.remove-streetview-2').click(function(){
+				jQuery('#map2').jmap('RemoveStreetviewPanorama', view);
+				return false;
+			});
+		});
+		return false;
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+    <!-- Localhost Key-->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>
+    
+    <!-- map.ifies.org -->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>-->
+    
+    <script type="text/javascript" src="../../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../../dist/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+					
+					var streetMapCenter = [40.74569634433956,-73.99635314941406];
+					
+					jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+					
+					jQuery('.add-streetview').click(function(){
+						jQuery('#map1').jmap('CreateStreetviewPanorama', {
+							'latlng':streetMapCenter
+						}, function (view, options){
+							jQuery('.remove-streetview').click(function(){
+								jQuery('#map1').jmap('RemoveStreetviewPanorama', view);
+								jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+								return false;
+							});
+						});
+						return false;
+					});
+					
+					jQuery('.add-streetview-2').click(function(){
+						jQuery('#map2').jmap('CreateStreetviewPanorama', {
+							'latlng':streetMapCenter,
+							'overideContainer': '#streetview'
+						}, function (view, options){
+							jQuery('.remove-streetview-2').click(function(){
+								jQuery('#map2').jmap('RemoveStreetviewPanorama', view);
+								return false;
+							});
+						});
+						return false;
+					});
+					
+       	});
+    </script>
+    
+    </body>
+</html>

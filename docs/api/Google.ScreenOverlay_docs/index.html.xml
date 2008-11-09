@@ -1,20 +1,39 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.ScreenOverlay.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
         <function name="AddScreenOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Adds a screen overlau to the selected map.</description>
+            <description>This function allows you to add a screen overlay to a map.</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
                 <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
                 </parameter>
                 <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.AddScreenOverlay" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>
             <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
                 <description>Default options for AddScreenOverlay</description>
+                <parameters>
+                    <parameter name="imageUrl" type="String">
+                        <description>The URL of the image to load.</description>
+                    </parameter>
+                    <parameter name="screenXY" type="Object">
+                        <description>The X/Y position in the viewport to place the image.</description>
+                    </parameter>
+                    <parameter name="overlayXY" type="Object">
+                        <description>The overlay X/Y position in the viewport.</description>
+                    </parameter>
+                    <parameter name="size" type="Object">
+                        <description>The size of the image, which is converted to a GSize.</description>
+                    </parameter>
+                </parameters>
                 <aliases>
                     <alias name="Mapifies.AddScreenOverlay.defaults" />                </aliases>
                 <return-types>
@@ -22,6 +41,20 @@
                 </return-types>
                 <property name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
                     <description>Default options for AddScreenOverlay</description>
+                    <parameters>
+                        <parameter name="imageUrl" type="String">
+                            <description>The URL of the image to load.</description>
+                        </parameter>
+                        <parameter name="screenXY" type="Object">
+                            <description>The X/Y position in the viewport to place the image.</description>
+                        </parameter>
+                        <parameter name="overlayXY" type="Object">
+                            <description>The overlay X/Y position in the viewport.</description>
+                        </parameter>
+                        <parameter name="size" type="Object">
+                            <description>The size of the image, which is converted to a GSize.</description>
+                        </parameter>
+                    </parameters>
                     <aliases>
                         <alias name="Mapifies.AddScreenOverlay.defaults" />                    </aliases>
                 </property>
@@ -40,15 +73,23 @@
             </property>
         </function>
         <function name="RemoveScreenOverlay" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Removes a screen overlay to the selected map.</description>
+            <description>This function allows you to remove a screen overlay from the map</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
-                <parameter name="overlay" type="Object">
+                <parameter name="overlay" type="GScreenOverlay">
+                    <description>The overlay to be removed</description>
                 </parameter>
-                <parameter name="True" type="Boolean">
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveScreenOverlay" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>

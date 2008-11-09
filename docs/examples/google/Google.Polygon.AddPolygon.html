@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Adding and Removing Polygons & Polylines</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes adding and removing polygons and polylines from your map.</p>
+                <p>
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GPolygon">Google polygons</a> and 
+										<a href="http://code.google.com/apis/maps/documentation/reference.html#GPolyline">Google polylines</a>
+                    allows you to define and add a polygon shape to any position on the map.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Simple Adding and Removing Polygon.</h3>
+                <div id="map1" class="jmap"></div>
+								<p align="center"><a href="#" class="add-polygon">Add Polygon</a> | <a href="#" class="remove-polygon">Remove Polygon</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[55.958858,-3.162302]});
+	
+	jQuery('.add-polygon').click(function(){
+		jQuery('#map1').jmap('AddPolygon', {
+			'polygonPoints': [
+				[55.958858,-3.162302],
+				[55.968858,-3.162302],
+				[55.968858,-3.152302],
+				[55.958858,-3.152302],
+				[55.958858,-3.162302]
+			],
+			'polygonFillOpacity': 0.5
+		}, function( polygon, options){
+			jQuery('.remove-polygon').click(function(){
+				jQuery('#map1').jmap('RemovePolygon', polygon);
+			});
+		});
+		return false;
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+				
+			<div class="example">
+                <h3>Example 2: Simple Adding and Removing Polyline.</h3>
+                <div id="map2" class="jmap"></div>
+								<p align="center"><a href="#" class="add-polyline">Add Polyline</a> | <a href="#" class="remove-polyline">Remove Polyline</a></p>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map2').jmap('init', {'mapType':'hybrid','mapCenter':[55.958858,-3.162302]});
+	jQuery('.add-polyline').click(function(){
+			jQuery('#map2').jmap('AddPolyline', {
+				'polylinePoints': [
+					[55.958858,-3.162302],
+					[55.768858,-3.162302],
+					[55.968858,-3.552302],
+					[55.958858,-3.152302],
+					[55.458858,-3.162302]
+				]
+			}, function( polyline, options){
+				jQuery('.remove-polyline').click(function(){
+					jQuery('#map2').jmap('RemovePolyline', polyline);
+				});
+			});
+			return false;
+		});
+ 	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+    <!-- Localhost Key-->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>
+    
+    <!-- map.ifies.org -->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>-->
+    
+    <script type="text/javascript" src="../../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../../dist/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+					jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[55.958858,-3.162302]});
+					
+					jQuery('.add-polygon').click(function(){
+						jQuery('#map1').jmap('AddPolygon', {
+							'polygonPoints': [
+								[55.958858,-3.162302],
+								[55.968858,-3.162302],
+								[55.968858,-3.152302],
+								[55.958858,-3.152302],
+								[55.958858,-3.162302]
+							],
+							'polygonFillOpacity': 0.5
+						}, function( polygon, options){
+							jQuery('.remove-polygon').click(function(){
+								jQuery('#map1').jmap('RemovePolygon', polygon);
+							});
+						});
+						return false;
+					});
+					
+					jQuery('.add-polyline').click(function(){
+						jQuery('#map2').jmap('AddPolyline', {
+							'polylinePoints': [
+								[55.958858,-3.162302],
+								[55.768858,-3.162302],
+								[55.968858,-3.552302],
+								[55.958858,-3.152302],
+								[55.458858,-3.162302]
+							]
+						}, function( polyline, options){
+							jQuery('.remove-polyline').click(function(){
+								jQuery('#map2').jmap('RemovePolyline', polyline);
+							});
+						});
+						return false;
+					});
+       	});
+    </script>
+    
+    </body>
+</html>

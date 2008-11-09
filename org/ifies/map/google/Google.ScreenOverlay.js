@@ -1,22 +1,26 @@
 /**
- * Adds a screen overlau to the selected map.
- * @id Mapifies.AddScreenOverlay
- * @param {Object} element
- * @param {Object} options
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+ * This function allows you to add a screen overlay to a map.
  * @method
  * @namespace Mapifies
+ * @id Mapifies.AddScreenOverlay
+ * @alias Mapifies.AddScreenOverlay
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the screen overlay and options.
  */
 Mapifies.AddScreenOverlay = function( element, options, callback ) {
-	
 	/**
 	 * Default options for AddScreenOverlay
-	 * @id Mapifies.AddScreenOverlay.defaults
-	 * @alias Mapifies.AddScreenOverlay.defaults
-	 * @return {Object} The options for AddScreenOverlay
 	 * @method
 	 * @namespace Mapifies.AddScreenOverlay
+	 * @id Mapifies.AddScreenOverlay.defaults
+	 * @alias Mapifies.AddScreenOverlay.defaults
+	 * @param {String} imageUrl The URL of the image to load.
+	 * @param {Object} screenXY The X/Y position in the viewport to place the image.
+	 * @param {Object} overlayXY The overlay X/Y position in the viewport.
+	 * @param {Object} size The size of the image, which is converted to a GSize.
+	 * @return {Object} The options for AddScreenOverlay
 	 */
 	function defaults() {
 		return {
@@ -36,14 +40,19 @@ Mapifies.AddScreenOverlay = function( element, options, callback ) {
 };
 
 /**
- * Removes a screen overlay to the selected map.
+ * This function allows you to remove a screen overlay from the map
+ * @method
+ * @namespace Mapifies
  * @id Mapifies.RemoveScreenOverlay
- * @param {Object} element
- * @param {Object} overlay
- * @param {Boolean} True
+ * @alias Mapifies.RemoveScreenOverlay
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GScreenOverlay} overlay The overlay to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the overlay.
  */
-Mapifies.RemoveScreenOverlay = function ( element, overlay ) {
+Mapifies.RemoveScreenOverlay = function ( element, overlay, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(overlay);
+	if (typeof callback === 'function') return callback(overlay);
 	return;
 };

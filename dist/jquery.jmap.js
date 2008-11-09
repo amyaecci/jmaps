@@ -706,7 +706,7 @@ Mapifies.AddFeed = function( element, options, callback ) {
 };
 
 /**
- * This function allows you to pass a GeoXML or KML feed to a Google map.
+ * This function allows you to remove a GeoXML or KML feed from a Google map.
  * @method
  * @namespace Mapifies
  * @id Mapifies.RemoveFeed
@@ -719,7 +719,7 @@ Mapifies.AddFeed = function( element, options, callback ) {
 Mapifies.RemoveFeed = function ( element, feed, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(feed);
-	if (typeof callback == 'function') return callback( feed, options );
+	if (typeof callback == 'function') return callback( feed );
 	return;
 };
 /**
@@ -776,6 +776,7 @@ Mapifies.AddGroundOverlay = function( element, options, callback) {
  * @alias Mapifies.RemoveGroundOverlay
  * @param {jQuery} element The element to initialise the map on.
  * @param {GGroundOverlay} groundOverlay The ground overlay to remove.
+ * @param {Function} callback The callback function to pass out after initialising the map.
  * @return {Function} callback The callback option with the feed object and options.
  */
 Mapifies.RemoveGroundOverlay = function ( element, groundOverlay, callback ) {
@@ -792,40 +793,46 @@ Mapifies.RemoveGroundOverlay = function ( element, groundOverlay, callback ) {
  * @alias Mapifies.AddMarker
  * @param {jQuery} element The element to initialise the map on.
  * @param {Object} options The object that contains the options.
- * @param {Object} callback The callback function to pass out after initialising the map.
+ * @param {Function} callback The callback function to pass out after initialising the map.
  * @return {Function} callback The callback option with the marker object and options.
  */
 Mapifies.AddMarker = function ( element, options, callback ) {
-	
+	/**
+	 * Default options for AddGroundOverlay
+	 * @method
+	 * @namespace Mapifies.AddGroundOverlay
+	 * @id Mapifies.AddGroundOverlay.defaults
+	 * @alias Mapifies.AddGroundOverlay.defaults
+	 * @param {Object} pointLatLng The Lat/Lng coordinates of the marker.
+	 * @param {String} pointHTML The HTML to appear in the markers info window.
+	 * @param {String} pointOpenHTMLEvent The javascript event type to open the marker info window.  Default is 'click'.
+	 * @param {Boolean} pointIsDraggable Defines if the point is draggable by the end user.  Default false.
+	 * @param {Boolean} pointIsRemovable Defines if the point can be removed by the user.  Default false.
+	 * @param {Boolean} pointRemoveEvent The event type to remove a marker.  Default 'dblclick'.
+	 * @param {Number} pointMinZoom The minimum zoom level to display the marker if using a marker manager.
+	 * @param {Number} pointMaxZoom The maximum zoom level to display the marker if using a marker manager.
+	 * @param {GIcon} pointIcon A GIcon to display instead of the standard marker graphic.
+	 * @param {Boolean} centerMap Automatically center the map on the new marker.  Default false.
+	 * @return {Object} The options for AddGroundOverlay
+	 */
 	function defaults() {
 		var values = {
-			// Point lat & lng
-			pointLatLng: [],
-			// Point HTML for infoWindow
-			pointHTML: null,
-			// Event to open infoWindow (click, dblclick, mouseover, etc)
-			pointOpenHTMLEvent: "click",
-			// Point is draggable?
-			pointIsDraggable: false,
-			// Point is removable?
-			pointIsRemovable: false,
-			// Event to remove on (click, dblclick, mouseover, etc)
-			pointRemoveEvent: "dblclick",
-			// These two are only required if adding to the marker manager
-			pointMinZoom: 4,
-			pointMaxZoom: 17,
-			// Optional Icon to pass in (not yet implemented)
-			pointIcon: null,
-			// For maximizing infoWindows (not yet implemented)
-			pointMaxContent: null,
-			pointMaxTitle: null,
-			centerMap: false
+			'pointLatLng': undefined,
+			'pointHTML': undefined,
+			'pointOpenHTMLEvent': 'click',
+			'pointIsDraggable': false,
+			'pointIsRemovable': false,
+			'pointRemoveEvent': 'dblclick',
+			'pointMinZoom': 4,
+			'pointMaxZoom': 17,
+			'pointIcon': undefined,
+			'centerMap': false
 		};
 		return values;
 	};
-	
 	var thisMap = Mapifies.MapObjects.Get(element);
 	options = jQuery.extend({}, defaults(), options);
+	
 	var markerOptions = {}
 	
 	if (typeof options.pointIcon == 'object')
@@ -865,27 +872,55 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 
 
 /**
- * Removes the specificed marker on the passed map
- * @param {Object} element
- * @param {Object} marker
- * @return {Boolean}
+ * This function allows you to remove markers from the map
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.RemoveMarker
+ * @alias Mapifies.RemoveMarker
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GMarker} options The marker to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the marker object.
  */
-Mapifies.RemoveMarker = function (element, marker ) {
+Mapifies.RemoveMarker = function ( element, marker, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(marker);
+	if (typeof callback === 'function') return callback(marker);
 	return;
 };
 
+/**
+ * This function allows you to create a marker manager to store and manage any markers created on the map.  Google recommends not using this marker manager and instead using the open source one.
+ * @method
+ * @deprecated
+ * @namespace Mapifies
+ * @id Mapifies.CreateMarkerManager
+ * @alias Mapifies.CreateMarkerManager
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GMarker} options The marker to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the marker object and options.
+ */
 Mapifies.CreateMarkerManager = function(element, options, callback) {
-	
+	/**
+	 * Default options for CreateMarkerManager
+	 * @method
+	 * @namespace Mapifies.CreateMarkerManager
+	 * @id Mapifies.CreateMarkerManager.defaults
+	 * @alias Mapifies.CreateMarkerManager.defaults
+	 * @param {Number} borderPadding Specifies, in pixels, the extra padding outside the map's current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.
+	 * @param {Number} maxZoom The maximum zoom level to show markers at
+	 * @param {Boolean} trackMarkers Indicates whether or not a marker manager should track markers' movements.
+	 * @return {Object} The options for CreateMarkerManager
+	 */
 	function defaults() {
 		return {
 			// Border Padding in pixels
-			borderPadding: 100,
+			'borderPadding': 100,
 			// Max zoom level 
-			maxZoom: 17,
+			'maxZoom': 17,
 			// Track markers
-			trackMarkers: false
+			'trackMarkers': false
 		}
 	}
 	var thisMap = Mapifies.MapObjects.Get(element);
@@ -894,28 +929,54 @@ Mapifies.CreateMarkerManager = function(element, options, callback) {
 	Mapifies.MapObjects.Append(element, 'MarkerManager',markerManager);
 
 	// Return the callback
-	if (typeof callback == 'function') return callback( options );
+	if (typeof callback == 'function') return callback( markerManager, options );
 };
-Mapifies.AddPolygon = function(element, options, callback) {
-	
+/**
+ * This function allows you to add a polygon to a map using GLatLng points
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.AddPolygon
+ * @alias Mapifies.AddPolygon
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the polygon object, polygon options and options.
+ */
+Mapifies.AddPolygon = function( element, options, callback ) {
+	/**
+	 * Default options for AddPolygon
+	 * @method
+	 * @namespace Mapifies.AddPolygon
+	 * @id Mapifies.AddPolygon.defaults
+	 * @alias Mapifies.AddPolygon.defaults
+	 * @param {Object} polygonPoints An array of Lat/Lng points that make up the vertexes of the polygon.
+	 * @param {String} polygonStrokeColor The stroke colour for the polygon.
+	 * @param {Number} polygonStrokeWeight The thickness of the polygon line.
+	 * @param {Number} polygonStrokeOpacity A value from 0 to 1 of for the line opacity.
+	 * @param {String} polygonFillColor The colour of the fill area for the polygon.
+	 * @param {Number} polygonFillOpacity The value from 0 to 1 for the polygon fill opacity.
+	 * @param {Object} mapCenter An array containing the LatLng point to center on.
+	 * @param {Boolean} polygonClickable Defines if the polygon is clickable or not. Default true.
+	 * @return {Object} The options for AddPolygon
+	 */
 	function defaults() {
 		return {
 			// An array of GLatLng objects
-			polygonPoints: [],
+			'polygonPoints': [],
 			// The outer stroke colour
-	 		polygonStrokeColor: "#000000",
+	 		'polygonStrokeColor': "#000000",
 	 		// Stroke thickness
-	 		polygonStrokeWeight: 5,
+	 		'polygonStrokeWeight': 5,
 	 		// Stroke Opacity
-	 		polygonStrokeOpacity: 1,
+	 		'polygonStrokeOpacity': 1,
 	 		// Fill colour
-	 		polygonFillColor: "#ff0000",
+	 		'polygonFillColor': "#ff0000",
 	 		// Fill opacity
-	 		polygonFillOpacity: 1,
+	 		'polygonFillOpacity': 1,
 	 		// Optional center map
-	 		mapCenter: [],
+	 		'mapCenter': undefined,
 	 		// Is polygon clickable?
-	 		polygonClickable: true
+	 		'polygonClickable': true
 		}
 	}
 	
@@ -941,47 +1002,66 @@ Mapifies.AddPolygon = function(element, options, callback) {
 	return;
 }
 
-Mapifies.RemovePolygon = function (element, polygon ) {
+/**
+ * This function allows you to remove a polygon from the map
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.RemovePolygon
+ * @alias Mapifies.RemovePolygon
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GPolygon} polygon The polygon to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the polygon.
+ */
+Mapifies.RemovePolygon = function ( element, polygon, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(polygon);
+	if (typeof callback === 'function') return callback(polygon);
 	return;
 };
 /**
- * Adds an polyline to the map made up of several geopoints.
- * @id Mapifies.AddPolyline
- * @param {Object} element
- * @param {Object} options
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+ * This function allows you to add a polyline to a map using GLatLng points
  * @method
  * @namespace Mapifies
+ * @id Mapifies.AddPolyline
+ * @alias Mapifies.AddPolyline
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the polygon object, polygon options and options.
  */
 Mapifies.AddPolyline = function (element, options, callback) {
-	
 	/**
 	 * Default options for AddPolyline
-	 * @id Mapifies.AddPolyline.defaults
-	 * @alias Mapifies.AddPolyline.defaults
-	 * @return {Object} The options for AddPolyline
 	 * @method
 	 * @namespace Mapifies.AddPolyline
+	 * @id Mapifies.AddPolygon.defaults
+	 * @alias Mapifies.AddPolygon.defaults
+	 * @param {Object} polylinePoints An array of Lat/Lng points that make up the vertexes of the polyline.
+	 * @param {String} polylineStrokeColor The stroke colour for the polyline.
+	 * @param {Number} polylineStrokeWidth The thickness of the polyline line.
+	 * @param {Number} polylineStrokeOpacity A value from 0 to 1 of for the line opacity.
+	 * @param {Object} mapCenter An array containing the LatLng point to center on.
+	 * @param {Boolean} polylineGeodesic Defines if the line follows the curve of the earth.  Default false.
+	 * @param {Boolean} polylineClickable Defines if the polygon is clickable or not. Default true.
+	 * @return {Object} The options for AddPolyline
 	 */
 	function defaults() {
 		return {
 			// An array of GLatLng objects
-			polylinePoints: [],
+			'polylinePoints': [],
 			// Colour of the line
-			polylineStrokeColor: "#ff0000",
+			'polylineStrokeColor': "#ff0000",
 			// Width of the line
-			polylineStrokeWidth: 10,
+			'polylineStrokeWidth': 10,
 			// Opacity of the line
-			polylineStrokeOpacity: 1,
+			'polylineStrokeOpacity': 1,
 			// Optional center map
-			mapCenter: [],
+			'mapCenter': [],
 			// Is line Geodesic (i.e. bends to the curve of the earth)?
-			polylineGeodesic: false,
+			'polylineGeodesic': false,
 			// Is line clickable?
-			polylineClickable: true
+			'polylineClickable': true
 		};
 	};
 	
@@ -1010,39 +1090,45 @@ Mapifies.AddPolyline = function (element, options, callback) {
 }
 
 /**
- * Removes an polyline to the map made up of several geopoints.
- * @id Mapifies.RemovePolyline
- * @param {Object} element
- * @param {Object} polyline
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+ * This function allows you to remove a polyline from the map
  * @method
  * @namespace Mapifies
+ * @id Mapifies.RemovePolyline
+ * @alias Mapifies.RemovePolyline
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GPolyline} polyline The polyline to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the polyline.
  */
 Mapifies.RemovePolyline = function (element, polyline, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(polyline);
+	if (typeof callback === 'function') return callback(polyline);
 	return;
 };
 /**
- * Adds a screen overlau to the selected map.
- * @id Mapifies.AddScreenOverlay
- * @param {Object} element
- * @param {Object} options
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+ * This function allows you to add a screen overlay to a map.
  * @method
  * @namespace Mapifies
+ * @id Mapifies.AddScreenOverlay
+ * @alias Mapifies.AddScreenOverlay
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the screen overlay and options.
  */
 Mapifies.AddScreenOverlay = function( element, options, callback ) {
-	
 	/**
 	 * Default options for AddScreenOverlay
-	 * @id Mapifies.AddScreenOverlay.defaults
-	 * @alias Mapifies.AddScreenOverlay.defaults
-	 * @return {Object} The options for AddScreenOverlay
 	 * @method
 	 * @namespace Mapifies.AddScreenOverlay
+	 * @id Mapifies.AddScreenOverlay.defaults
+	 * @alias Mapifies.AddScreenOverlay.defaults
+	 * @param {String} imageUrl The URL of the image to load.
+	 * @param {Object} screenXY The X/Y position in the viewport to place the image.
+	 * @param {Object} overlayXY The overlay X/Y position in the viewport.
+	 * @param {Object} size The size of the image, which is converted to a GSize.
+	 * @return {Object} The options for AddScreenOverlay
 	 */
 	function defaults() {
 		return {
@@ -1062,19 +1148,45 @@ Mapifies.AddScreenOverlay = function( element, options, callback ) {
 };
 
 /**
- * Removes a screen overlay to the selected map.
+ * This function allows you to remove a screen overlay from the map
+ * @method
+ * @namespace Mapifies
  * @id Mapifies.RemoveScreenOverlay
- * @param {Object} element
- * @param {Object} overlay
- * @param {Boolean} True
+ * @alias Mapifies.RemoveScreenOverlay
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GScreenOverlay} overlay The overlay to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the overlay.
  */
-Mapifies.RemoveScreenOverlay = function ( element, overlay ) {
+Mapifies.RemoveScreenOverlay = function ( element, overlay, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(overlay);
+	if (typeof callback === 'function') return callback(overlay);
 	return;
 };
+/**
+ * This function allows you to add a Google Streetview
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.CreateStreetviewPanorama
+ * @alias Mapifies.CreateStreetviewPanorama
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the street view.
+ */
 Mapifies.CreateStreetviewPanorama = function( element, options, callback ) {
-	
+	/**
+	 * Default options for CreateStreetviewPanorama
+	 * @method
+	 * @namespace Mapifies.CreateStreetviewPanorama
+	 * @id Mapifies.CreateStreetviewPanorama.defaults
+	 * @alias Mapifies.CreateStreetviewPanorama.defaults
+	 * @param {String} overideContainer A ID of a div to put the street view into, otherwise it will default to the map.
+	 * @param {Object} latlng The starting Lat/Lng of the streetview - this is required.
+	 * @param {Object} pov The point of view to initialse the map on.  This is 3 values, X/Y/Z
+	 * @return {Object} The options for CreateStreetviewPanorama
+	 */
 	function defaults() {
 		return {
 			'overideContainer':'',
@@ -1107,42 +1219,46 @@ Mapifies.CreateStreetviewPanorama = function( element, options, callback ) {
 };
 
 /**
- * Removes the specificed feed on the passed map
- * @param {Object} element
- * @param {Object} feed
- * @param {Object} callback
- * @return {Function}
+ * This function allows you to remove a street view from the map
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.RemoveStreetviewPanorama
+ * @alias Mapifies.RemoveStreetviewPanorama
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GStreetView} view The view to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the view.
  */
 Mapifies.RemoveStreetviewPanorama = function ( element, view, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	view.remove();
 	if (typeof callback == 'function') return callback( view );
 	return;
-};
-/**
- * Adds a traffic layer to the selected map.
- * @id Mapifies.AddTrafficInfo
- * @param {Object} element
- * @param {Object} options
- * @param {Function} callback
- * @return {Function} Returns a passed callback function or true
+};/**
+ * This function allows you to add a Google Traffic Layer
  * @method
  * @namespace Mapifies
+ * @id Mapifies.AddTrafficInfo
+ * @alias Mapifies.AddTrafficInfo
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the traffic layer.
  */
 Mapifies.AddTrafficInfo = function( element, options, callback) {
-	
 	/**
 	 * Default options for AddTrafficInfo
-	 * @id Mapifies.AddTrafficInfo.defaults
-	 * @alias Mapifies.AddTrafficInfo.defaults
-	 * @return {Object} The options for AddTrafficInfo
 	 * @method
 	 * @namespace Mapifies.AddTrafficInfo
+	 * @id Mapifies.AddTrafficInfo.defaults
+	 * @alias Mapifies.AddTrafficInfo.defaults
+	 * @param {Object} mapCenter The Lat/Lng to center the map on
+	 * @return {Object} The options for AddTrafficInfo
 	 */
 	function defaults() {
 		return {
 			// Center the map on this point (optional)
-			mapCenter: []
+			'mapCenter': []
 		};
 	};
 	var thisMap = Mapifies.MapObjects.Get(element);
@@ -1160,15 +1276,20 @@ Mapifies.AddTrafficInfo = function( element, options, callback) {
 };
 
 /**
- * Removes a traffic layer to the selected map.
+ * This function allows you to remove a traffic layer from the map
+ * @method
+ * @namespace Mapifies
  * @id Mapifies.RemoveTrafficInfo
- * @param {Object} element
- * @param {Object} trafficOverlay
- * @param {Boolean} True
+ * @alias Mapifies.RemoveTrafficInfo
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {GTrafficOverlay} trafficOverlay The traffic overlay to be removed
+ * @param {Function} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the traffic overlay.
  */
-Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay ) {
+Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.removeOverlay(trafficOverlay);
+	if (typeof callback === 'function') return callback(trafficOverlay);
 	return;
 };var Mapifies;
 

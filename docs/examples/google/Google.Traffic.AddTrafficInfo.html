@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <title>jMaps Examples: Add a GeoFeed</title>
+        <title>jMaps Examples: Add a Traffic Info Layer</title>
         <link rel="stylesheet" media="screen" href="../css/main.css" />
     </head>
     <body>
@@ -12,30 +12,28 @@
         <div class="all-examples">
             
             <div class="all-example-description">
-                <p>This example shows you how easily jQuery + jMaps makes adding a Geo feed.</p>
+                <p>This example shows you how easily jQuery + jMaps makes adding a traffic information layer.</p>
                 <p>
-                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GGeoXml">Google GeoXML and KML</a>
-                    allows you to add a feed of points to a map.
+                    <a href="http://code.google.com/apis/maps/documentation/reference.html#GTrafficOverlay">Google traffic</a>
+                    allows you to add a layer of traffic information to your maps.
                 </p>
             </div>
             
             <div class="example">
-                <h3>Example: Add a GeoFeed.</h3>
+                <h3>Example: Add a Traffic Info Layer.</h3>
                 <div id="map1" class="jmap"></div>
-								<p align="center"><a href="#" class="add-feed">Add Feed</a> | <a href="#" class="remove-feed">Remove Feed</a></p>
+								<p align="center"><a href="#" class="add-traffic">Add Traffic</a> | <a href="#" class="remove-traffic">Remove Traffic</a></p>
                 <div class="example-code">
                     <pre>
                         <code>
 jQuery(document).ready(function(){
-	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[55.958639, -3.162516]});
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.714996739064084,-74.00665283203125]});
 	
-	jQuery('.add-feed').click(function(){
-		jQuery('#map1').jmap('AddFeed', {
-			'feedUrl':'http://api.flickr.com/services/feeds/geo/?id=84656963@N00&lang=en-us&format=rss_200'
-		}, function(feed, options){
-			jQuery('.remove-feed').click(function(){
-				jQuery('#map1').jmap('RemoveFeed', feed);
-			})
+	jQuery('.add-traffic').click(function(){
+		jQuery('#map1').jmap('AddTrafficInfo', null, function(traffic, options) {
+			jQuery('.remove-traffic').click(function(){
+				jQuery('#map1').jmap('RemoveTrafficInfo', traffic);
+			});
 		});
 	});
 });
@@ -54,15 +52,13 @@ jQuery(document).ready(function(){
     
     <script type="text/javascript">
         jQuery(document).ready(function(){
-					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[55.958639, -3.162516]});
+					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.714996739064084,-74.00665283203125]});
 					
-					jQuery('.add-feed').click(function(){
-						jQuery('#map1').jmap('AddFeed', {
-							'feedUrl':'http://api.flickr.com/services/feeds/geo/?id=84656963@N00&lang=en-us&format=rss_200'
-						}, function(feed, options){
-							jQuery('.remove-feed').click(function(){
-								jQuery('#map1').jmap('RemoveFeed', feed);
-							})
+					jQuery('.add-traffic').click(function(){
+						jQuery('#map1').jmap('AddTrafficInfo', null, function(traffic, options) {
+							jQuery('.remove-traffic').click(function(){
+								jQuery('#map1').jmap('RemoveTrafficInfo', traffic);
+							});
 						});
 					});
         });

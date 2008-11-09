@@ -1,26 +1,36 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Traffic.js">
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
         <function name="AddTrafficInfo" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Adds a traffic layer to the selected map.</description>
+            <description>This function allows you to add a Google Traffic Layer</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
                 <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
                 </parameter>
                 <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.AddTrafficInfo" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>
             <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
                 <description>Default options for AddTrafficInfo</description>
+                <parameters>
+                    <parameter name="mapCenter" type="Object">
+                        <description>The Lat/Lng to center the map on</description>
+                    </parameter>
+                </parameters>
                 <aliases>
                     <alias name="Mapifies.AddTrafficInfo.defaults" />                </aliases>
                 <return-types>
                     <return-type type="Object" />
                 </return-types>
-                <property name="mapCenter" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                <property name="&apos;mapCenter&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
                 </property>
             </function>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
@@ -31,15 +41,23 @@
             </property>
         </function>
         <function name="RemoveTrafficInfo" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
-            <description>Removes a traffic layer to the selected map.</description>
+            <description>This function allows you to remove a traffic layer from the map</description>
             <parameters>
-                <parameter name="element" type="Object">
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
                 </parameter>
-                <parameter name="trafficOverlay" type="Object">
+                <parameter name="trafficOverlay" type="GTrafficOverlay">
+                    <description>The traffic overlay to be removed</description>
                 </parameter>
-                <parameter name="True" type="Boolean">
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
                 </parameter>
             </parameters>
+            <aliases>
+                <alias name="Mapifies.RemoveTrafficInfo" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>

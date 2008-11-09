@@ -1,0 +1,99 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Polyline.js">
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="AddPolyline" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to add a polyline to a map using GLatLng points</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.AddPolyline" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Default options for AddPolyline</description>
+                <parameters>
+                    <parameter name="polylinePoints" type="Object">
+                        <description>An array of Lat/Lng points that make up the vertexes of the polyline.</description>
+                    </parameter>
+                    <parameter name="polylineStrokeColor" type="String">
+                        <description>The stroke colour for the polyline.</description>
+                    </parameter>
+                    <parameter name="polylineStrokeWidth" type="Number">
+                        <description>The thickness of the polyline line.</description>
+                    </parameter>
+                    <parameter name="polylineStrokeOpacity" type="Number">
+                        <description>A value from 0 to 1 of for the line opacity.</description>
+                    </parameter>
+                    <parameter name="mapCenter" type="Object">
+                        <description>An array containing the LatLng point to center on.</description>
+                    </parameter>
+                    <parameter name="polylineGeodesic" type="Boolean">
+                        <description>Defines if the line follows the curve of the earth. Default false.</description>
+                    </parameter>
+                    <parameter name="polylineClickable" type="Boolean">
+                        <description>Defines if the polygon is clickable or not. Default true.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.AddPolygon.defaults" />                </aliases>
+                <return-types>
+                    <return-type type="Object" />
+                </return-types>
+                <property name="&apos;polylinePoints&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+                <property name="&apos;polylineStrokeColor&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                </property>
+                <property name="&apos;polylineStrokeWidth&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                </property>
+                <property name="&apos;polylineStrokeOpacity&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                </property>
+                <property name="&apos;mapCenter&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                </property>
+                <property name="&apos;polylineGeodesic&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+                <property name="&apos;polylineClickable&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+            </function>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <object_literal name="polyLineOptions" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </object_literal>
+            <property name="allPoints" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+            </property>
+            <property name="polyline" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="RemovePolyline" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>This function allows you to remove a polyline from the map</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="polyline" type="GPolyline">
+                    <description>The polyline to be removed</description>
+                </parameter>
+                <parameter name="callback" type="Function">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.RemovePolyline" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>

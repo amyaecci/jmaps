@@ -24,7 +24,7 @@ Mapifies.AddPolygon = function( element, options, callback ) {
 	 * @param {Number} polygonFillOpacity The value from 0 to 1 for the polygon fill opacity.
 	 * @param {Object} mapCenter An array containing the LatLng point to center on.
 	 * @param {Boolean} polygonClickable Defines if the polygon is clickable or not. Default true.
-	 * @return {Object} The options for AddGroundOverlay
+	 * @return {Object} The options for AddPolygon
 	 */
 	function defaults() {
 		return {
