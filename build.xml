@@ -28,7 +28,7 @@
         </concat>
     	<java jar="${JAR}" fork="true">
             <arg value="${Google}" />
-        </java>
+      </java>
         <echo message="${Google} built." />
     </target>
 
