@@ -1,3 +1,4 @@
+
 /**
  * This function allows you to add a Google Streetview
  * @method

@@ -1,15 +1,4 @@
 <?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Address.js">
-    <function name="SearchCode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
-        <description>A jMaps helper method that returns an friendly object based on the SearchDirections return code</description>
-        <parameters>
-            <parameter name="code" type="Number">
-                <description>The number of the code returned</description>
-            </parameter>
-        </parameters>
-        <return-types>
-            <return-type type="Object" />
-        </return-types>
-    </function>
     <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
         <function name="SearchAddress" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
             <description>The SearchAddress function takes a map, options and callback function. The options can contain either an address string, to which a point is returned - or reverse geocoding a GLatLng, where an address is returned</description>

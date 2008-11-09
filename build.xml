@@ -18,12 +18,13 @@
             <fileset dir="${SRC_DIR}/google" includes="Google.GeoXML.js" />
             <fileset dir="${SRC_DIR}/google" includes="Google.GroundOverlay.js" />
             <fileset dir="${SRC_DIR}/google" includes="Google.Markers.js" />
-			<fileset dir="${SRC_DIR}/google" includes="Google.Polygon.js" />
-			<fileset dir="${SRC_DIR}/google" includes="Google.Polyline.js" />
-			<fileset dir="${SRC_DIR}/google" includes="Google.ScreenOverlay.js" />
-			<fileset dir="${SRC_DIR}/google" includes="Google.Streetview.js" />
-			<fileset dir="${SRC_DIR}/google" includes="Google.Traffic.js" />
-			<fileset dir="${SRC_DIR}" includes="Mapifies.jQuery.Alias.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Google.Polygon.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Google.Polyline.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Google.ScreenOverlay.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Google.Streetview.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Google.Traffic.js" />
+						<fileset dir="${SRC_DIR}/google" includes="Mapifies.Helpers.js" />
+						<fileset dir="${SRC_DIR}" includes="Mapifies.jQuery.Alias.js" />
         </concat>
     	<java jar="${JAR}" fork="true">
             <arg value="${Google}" />

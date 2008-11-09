@@ -144,39 +144,3 @@ Mapifies.SearchDirections = function( element, options, callback) {
 	
 	return;
 };
-
-/**
- * A jMaps helper method that returns an friendly object based on the SearchDirections return code
- * @method
- * @id SearchDirectionsCode
- * @param {Number} code The number of the code returned
- * @return {Object} Result Returns a result object with code, success and a friendly message
- */
-function SearchCode(code){
-	switch (code) {
-		case G_GEO_SUCCESS:
-			return {'code':G_GEO_SUCCESS,'success':true,'message':'Success'};
-		case G_GEO_UNKNOWN_ADDRESS:
-			return {'code' : G_GEO_UNKNOWN_ADDRESS, 'success' : false, 'message' : 'No corresponding geographic location could be found for one of the specified addresses. This may be due to the fact that the address is relatively new, or it may be incorrect'};
-			break;
-		case G_GEO_SERVER_ERROR:
-			return {'code' : G_GEO_UNKNOWN_ADDRESS, 'success' : false, 'message' : 'A geocoding or directions request could not be successfully processed, yet the exact reason for the failure is not known.'};
-			break;
-		case G_GEO_MISSING_QUERY:
-			return {'code' : G_GEO_UNKNOWN_ADDRESS, 'success' : false, 'message' : 'The HTTP q parameter was either missing or had no value. For geocoder requests, this means that an empty address was specified as input. For directions requests, this means that no query was specified in the input.'};
-			break;
-		case G_GEO_BAD_KEY:
-			return {'code' : G_GEO_UNKNOWN_ADDRESS, 'success' : false, 'message' : 'The given key is either invalid or does not match the domain for which it was given.'};
-			break;
-		case G_GEO_BAD_REQUEST:
-			return {'code' : G_GEO_UNKNOWN_ADDRESS, 'success' : false, 'message' : 'A directions request could not be successfully parsed.'};
-			break;
-		default:
-			return {
-				'code': null,
-				'success': false,
-				'message': 'An unknown error occurred.'
-			};
-		break;
-	};
-};

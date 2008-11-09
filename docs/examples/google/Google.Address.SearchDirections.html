@@ -42,8 +42,7 @@ jQuery(document).ready(function(){
             'query': jQuery('#query').val(),
             'panel':'#directions1'
         }, function(result, options) {
-             console.log(result);
-             var valid = SearchCode(result.getStatus());
+             var valid = Mapifies.SearchCode(result.getStatus());
              if (valid.success) {
                jQuery.each(result.Placemark, function(i, point){
                  jQuery('#map1').jmap('AddMarker',{
@@ -80,8 +79,7 @@ jQuery(document).ready(function(){
                             'query': jQuery('#query').val(),
                             'panel':'#directions1'
                         }, function(result, options) {
-                                    console.log(result);
-                                    var valid = SearchCode(result.getStatus());
+                                    var valid = Mapifies.SearchCode(result.getStatus());
                                     if (valid.success) {
                                         jQuery.each(result.Placemark, function(i, point){
                                             jQuery('#map1').jmap('AddMarker',{

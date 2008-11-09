@@ -43,7 +43,7 @@ jQuery(document).ready(function(){
             'returnType': 'getLocations'
         }, function(result, options) {
             
-            var valid = SearchCode(result.Status.code);
+            var valid = Mapifies.SearchCode(result.Status.code);
             if (valid.success) {
             jQuery.each(result.Placemark, function(i, point){
                 jQuery('#map1').jmap('AddMarker',{
@@ -83,7 +83,7 @@ jQuery('#point-submit-1').click(function(){
         'query': new GLatLng(points[0], points[1]),
         'returnType': 'getLocations'
     }, function(result, options) {
-                var valid = SearchCode(result.Status.code);
+                var valid = Mapifies.SearchCode(result.Status.code);
                 if (valid.success) {
                     jQuery.each(result.Placemark, function(i, point){
                     jQuery('#map2').jmap('AddMarker',{
@@ -123,7 +123,7 @@ jQuery('#point-submit-1').click(function(){
                     'returnType': 'getLocations'
                 }, function(result, options) {
                     
-                    var valid = SearchCode(result.Status.code);
+                    var valid = Mapifies.SearchCode(result.Status.code);
                     if (valid.success) {
                     jQuery.each(result.Placemark, function(i, point){
                         jQuery('#map1').jmap('AddMarker',{
@@ -146,7 +146,7 @@ jQuery('#point-submit-1').click(function(){
                     'query': new GLatLng(points[0], points[1]),
                     'returnType': 'getLocations'
                 }, function(result, options) {
-                    var valid = SearchCode(result.Status.code);
+                    var valid = Mapifies.SearchCode(result.Status.code);
                     if (valid.success) {
                     jQuery.each(result.Placemark, function(i, point){
                         jQuery('#map2').jmap('AddMarker',{
