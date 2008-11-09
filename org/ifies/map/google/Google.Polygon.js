@@ -54,7 +54,7 @@ Mapifies.AddPolygon = function( element, options, callback ) {
 	if (!options.polygonClickable)
 		polygonOptions = jQuery.extend(polygonOptions, {clickable: false});
 	 		
-	if(options.mapCenter[0] && options.mapCenter[1])
+	if(typeof options.mapCenter !== 'undefined' && options.mapCenter[0] && options.mapCenter[1])
 		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]));
 	
 	var allPoints = [];
