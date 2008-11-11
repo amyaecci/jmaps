@@ -52,7 +52,7 @@
                         <description>Automatically center the map on the new marker. Default false.</description>
                     </parameter>
                     <parameter name="centerMoveMethod" type="String">
-                        <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;</description>
+                        <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;. Added r64</description>
                     </parameter>
                 </parameters>
                 <aliases>
@@ -94,7 +94,7 @@
                             <description>Automatically center the map on the new marker. Default false.</description>
                         </parameter>
                         <parameter name="centerMoveMethod" type="String">
-                            <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;</description>
+                            <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;. Added r64</description>
                         </parameter>
                     </parameters>
                     <aliases>

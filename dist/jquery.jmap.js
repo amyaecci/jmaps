@@ -645,7 +645,7 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 	 * @param {Number} pointMaxZoom The maximum zoom level to display the marker if using a marker manager.
 	 * @param {GIcon} pointIcon A GIcon to display instead of the standard marker graphic.
 	 * @param {Boolean} centerMap Automatically center the map on the new marker.  Default false.
-	 * @param {String} centerMoveMethod The method in which to move to the marker.  Options are 'normal' (default) and 'pan'
+	 * @param {String} centerMoveMethod The method in which to move to the marker.  Options are 'normal' (default) and 'pan'.  Added r64
 	 * @return {Object} The options for AddGroundOverlay
 	 */
 	function defaults() {
