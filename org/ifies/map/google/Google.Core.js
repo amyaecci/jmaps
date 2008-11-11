@@ -190,7 +190,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 			console.log(Mapifies);
 		
 		if (typeof callback == 'function') 
-			return callback(element, options);
+			return callback(thisMap, element, options);
 	} else {
 		jQuery(element).text('Your browser does not support Google Maps.');
 		return false;

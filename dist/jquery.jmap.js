@@ -190,7 +190,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 			console.log(Mapifies);
 		
 		if (typeof callback == 'function') 
-			return callback(element, options);
+			return callback(thisMap, element, options);
 	} else {
 		jQuery(element).text('Your browser does not support Google Maps.');
 		return false;
@@ -645,6 +645,7 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 	 * @param {Number} pointMaxZoom The maximum zoom level to display the marker if using a marker manager.
 	 * @param {GIcon} pointIcon A GIcon to display instead of the standard marker graphic.
 	 * @param {Boolean} centerMap Automatically center the map on the new marker.  Default false.
+	 * @param {String} centerMoveMethod The method in which to move to the marker.  Options are 'normal' (default) and 'pan'
 	 * @return {Object} The options for AddGroundOverlay
 	 */
 	function defaults() {
@@ -658,7 +659,8 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 			'pointMinZoom': 4,
 			'pointMaxZoom': 17,
 			'pointIcon': undefined,
-			'centerMap': false
+			'centerMap': false,
+			'centerMoveMethod':'normal'
 		};
 		return values;
 	};
@@ -673,8 +675,17 @@ Mapifies.AddMarker = function ( element, options, callback ) {
 	if (options.pointIsDraggable)
 		jQuery.extend(markerOptions, {'draggable': options.pointIsDraggable});
 			
-	if (options.centerMap)
-		thisMap.setCenter(new GLatLng(options.pointLatLng[0],options.pointLatLng[1]));
+	if (options.centerMap) {
+		switch (options.centerMoveMethod) {
+			case 'normal':
+				thisMap.setCenter(new GLatLng(options.pointLatLng[0],options.pointLatLng[1]));
+			break;
+			case 'pan':
+				thisMap.panTo(new GLatLng(options.pointLatLng[0],options.pointLatLng[1]));
+			break;
+		}
+	}
+		
 		
 	// Create marker, optional parameter to make it draggable
 	var marker = new GMarker(new GLatLng(options.pointLatLng[0],options.pointLatLng[1]), markerOptions);

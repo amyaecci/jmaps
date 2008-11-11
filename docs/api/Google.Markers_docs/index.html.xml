@@ -51,6 +51,9 @@
                     <parameter name="centerMap" type="Boolean">
                         <description>Automatically center the map on the new marker. Default false.</description>
                     </parameter>
+                    <parameter name="centerMoveMethod" type="String">
+                        <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;</description>
+                    </parameter>
                 </parameters>
                 <aliases>
                     <alias name="Mapifies.AddGroundOverlay.defaults" />                </aliases>
@@ -90,6 +93,9 @@
                         <parameter name="centerMap" type="Boolean">
                             <description>Automatically center the map on the new marker. Default false.</description>
                         </parameter>
+                        <parameter name="centerMoveMethod" type="String">
+                            <description>The method in which to move to the marker. Options are &apos;normal&apos; (default) and &apos;pan&apos;</description>
+                        </parameter>
                     </parameters>
                     <aliases>
                         <alias name="Mapifies.AddGroundOverlay.defaults" />                    </aliases>
@@ -112,6 +118,8 @@
                     <property name="&apos;pointIcon&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                     </property>
                     <property name="&apos;centerMap&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                    </property>
+                    <property name="&apos;centerMoveMethod&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                     </property>
                 </object_literal>
             </function>

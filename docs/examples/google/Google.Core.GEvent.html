@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Using GEvents on Map</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how to mix jMaps with Google's own event handling.</p>
+                <p>
+                    The <a href="http://code.google.com/apis/maps/documentation/reference.html#GEvent">Google Event Handler</a>
+                    allows you to add events to the map and mixing it with jMaps, you can create interactive applications.
+                </p>
+								<p>
+									In the below example we'll build a simple map that has a drag event.  On this event, we will update
+									two divs - one to show the position of the center of the map, and we'll also reverse Geoencode the positions
+									to get the address.
+								</p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Using GEvents on Map.</h3>
+                <div id="map1" class="jmap"></div>
+                <fieldset height="400px">
+                    <legend>Example: GEvent Handler</legend>
+                    <div id="position"><strong>Position:</strong><span class="position-value"></span></div>
+										<div id="address"><strong>Address:</strong><span class="address-value"></span></div>
+                </fieldset>
+                
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+jQuery('#map1, #map2').jmap('init',{
+	'mapType':'hybrid',
+	'mapCenter':[37.4419, -122.1419]
+},
+function (map, element, options){
+	GEvent.addListener(map, "moveend", function(){
+		
+		// We don't need to use the internal Mapifies.getCenter here, as we have direct access to the map object.
+		var mapCenter = map.getCenter();
+		jQuery('.position-value').text(mapCenter.y + ',' + mapCenter.x);
+		
+		jQuery('#map1').jmap('SearchAddress', {
+			'query': new GLatLng(mapCenter.y, mapCenter.x),
+			'returnType':'getLocations'
+		}, function(result, options){
+			var valid = Mapifies.SearchCode(result.Status.code);
+    	if (valid.success) {
+				var output = ['<ul>'];
+				jQuery.each(result.Placemark, function(i, point){
+        	output.push('<li>' + point.address + '</li>');
+        });
+				output.push('</ul>');
+				jQuery('.address-value').html(output.join(''));
+			}
+		});
+	});
+});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>    
+    <!-- Localhost Key-->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>-->
+    
+    <!-- map.ifies.org -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="/libs/jquery.js"></script>
+    <script type="text/javascript" src="/libs/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#map1, #map2').jmap('init',{
+							'mapType':'hybrid',
+							'mapCenter':[37.4419, -122.1419]
+						},
+						function (map, element, options){
+							GEvent.addListener(map, "moveend", function(){
+								
+								// We don't need to use the internal Mapifies.getCenter here, as we have direct access to the map object.
+								var mapCenter = map.getCenter();
+								jQuery('.position-value').text(mapCenter.y + ',' + mapCenter.x);
+								
+								jQuery('#map1').jmap('SearchAddress', {
+									'query': new GLatLng(mapCenter.y, mapCenter.x),
+									'returnType':'getLocations'
+								}, function(result, options){
+									var valid = Mapifies.SearchCode(result.Status.code);
+                	if (valid.success) {
+										var output = ['<ul>'];
+				  					jQuery.each(result.Placemark, function(i, point){
+                    	output.push('<li>' + point.address + '</li>');
+                    });
+										output.push('</ul>');
+										jQuery('.address-value').html(output.join(''));
+				  				}
+								});
+							});
+						});
+					});
+    </script>
+    
+    </body>
+</html>
