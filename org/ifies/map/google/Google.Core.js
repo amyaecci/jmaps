@@ -296,3 +296,20 @@ Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 	var keyboardHandler = new GKeyboardHandler(thisMap);
 	if (typeof callback == 'function') return callback(keyboardHandler);
 };
+
+/**
+ * Check if a map container element has been resized or toggled from show/hide (Added r68)
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.CheckResize
+ * @alias Mapifies.CheckResize
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.CheckResize = function( element, options, callback ) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.checkResize();
+	if (typeof callback == 'function') return callback(element);
+};

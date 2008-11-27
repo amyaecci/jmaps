@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Resize and toogle display of map</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes dynamic, resizable maps.</p>
+                <p>
+                    The below example shows the new CheckResize function which will refresh the map for you.
+                </p>
+            </div>
+            
+            <div class="example">
+                <h3>Example: Resize and toogle display of map.</h3>
+                <div id="map1" class="jmap"></div>
+								<a href="#" class="toggle-map">Toogle Map Display</a> |
+								<a href="#" class="resize" rel="100">Size: 100x100</a> | 
+								<a href="#" class="resize" rel="300">Size: 300x300</a> |
+								<a href="#" class="resize" rel="600">Size: 600x600</a>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.736216,-74.193393]});
+	
+	jQuery('.toggle-map').toggle(function(){
+		jQuery('#map1').fadeOut(function(){
+			jQuery(this).jmap('CheckResize');
+		});
+	}, function(){
+		jQuery('#map1').fadeIn(function(){
+			jQuery(this).jmap('CheckResize');
+		});
+	});
+	
+	jQuery('.resize').click(function(){
+		var size = jQuery(this).attr('rel') + 'px';
+		jQuery('#map1').animate({'width': size, 'height': size}, function(){
+			jQuery(this).jmap('CheckResize');
+		});
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+<!-- Localhost Key-->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>-->
+    
+    <!-- map.ifies.org -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>
+		    
+    <script type="text/javascript" src="/libs/jquery.js"></script>
+    <script type="text/javascript" src="/libs/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.736216,-74.193393]});
+					
+					jQuery('.toggle-map').toggle(function(){
+						jQuery('#map1').fadeOut(function(){
+							jQuery(this).jmap('CheckResize');
+						});
+					}, function(){
+						jQuery('#map1').fadeIn(function(){
+							jQuery(this).jmap('CheckResize');
+						});
+					});
+					
+					jQuery('.resize').click(function(){
+						var size = jQuery(this).attr('rel') + 'px';
+						jQuery('#map1').animate({'width': size, 'height': size}, function(){
+							jQuery(this).jmap('CheckResize');
+						});
+					});
+       	});
+    </script>
+    
+    </body>
+</html>

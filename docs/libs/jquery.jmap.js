@@ -298,6 +298,23 @@ Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 };
 
 /**
+ * Check if a map container element has been resized or toggled from show/hide
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.CheckResize
+ * @alias Mapifies.CheckResize
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.CheckResize = function( element, options, callback ) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.checkResize();
+	if (typeof callback == 'function') return callback(element);
+};
+
+/**
  * The SearchAddress function takes a map, options and callback function.  The options can contain either an address string, to which a point is returned - or reverse geocoding a GLatLng, where an address is returned
  * @method
  * @namespace Mapifies

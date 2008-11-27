@@ -307,5 +307,26 @@
             <property name="keyboardHandler" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
+        <function name="CheckResize" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Check if a map container element has been resized or toggled from show/hide (Added r68)</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="Object">
+                    <description>The object that contains the options.</description>
+                </parameter>
+                <parameter name="callback" type="Object">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.CheckResize" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
     </property>
 </javascript>
