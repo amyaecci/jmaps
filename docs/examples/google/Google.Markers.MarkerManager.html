@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Using Marker Managers</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes using marker managers.</p>
+                <p>
+                	In example 1, we'll look at using the default <a href="http://code.google.com/apis/maps/documentation/reference.html#GMarkerManager">GMarkerManager</a>
+									which comes with google maps.
+								</p>
+								
+								<p>
+                    In the second example, we use the <a href="http://gmaps-utility-library-dev.googlecode.com/svn/trunk/markermanager/docs/examples.html">Open source Marker Manager</a>
+										available from the <a href="http://code.google.com/p/gmaps-utility-library-dev/">GMaps Utility Library</a>
+                </p>
+								<p>
+									In both cases, the API is exactly the same, however the open source marker manager has some improvements over the Google one.
+									You do not need to handle AddMarker in any special way with a marker manager, AddMarker will detect it and
+									automatically add it.
+								</p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Google GMarker Manager.</h3>
+                <div id="map1" class="jmap"></div>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419], 'mapZoom':5});
+	
+	jQuery('#map1').jmap('CreateMarkerManager');
+	for (var i=0;i<10;i++) {
+		var lat = 37.44 + (Math.random() - 0.5)*14.5;
+		var lng = -122.14 + (Math.random() - 0.5)*36.0;
+		jQuery('#map1').jmap('AddMarker', {'pointLatLng': [lat,lng]});
+	}
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+				
+				<div class="example">
+                <h3>Example 2: Open Source Marker Manager.</h3>
+                <div id="map2" class="jmap"></div>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map2').jmap('CreateMarkerManager', {'markerManager':'MarkerManager'});
+	for (var i=0;i<10;i++) {
+		var lat = 37.44 + (Math.random() - 0.5)*14.5;
+		var lng = -122.14 + (Math.random() - 0.5)*36.0;
+		jQuery('#map2').jmap('AddMarker', {'pointLatLng': [lat,lng]});
+	}
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+<!-- Localhost Key-->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>-->
+    
+    <!-- map.ifies.org -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>
+		    
+    <script type="text/javascript" src="/libs/jquery.js"></script>
+    <script type="text/javascript" src="/libs/jquery.jmap.js"></script>
+		<script type="text/javascript" src="/libs/markermanager.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+					jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419], 'mapZoom':5});
+					
+					jQuery('#map1').jmap('CreateMarkerManager');
+					for (var i=0;i<10;i++) {
+						var lat = 37.44 + (Math.random() - 0.5)*14.5;
+						var lng = -122.14 + (Math.random() - 0.5)*36.0;
+						jQuery('#map1').jmap('AddMarker', {'pointLatLng': [lat,lng]});
+					}
+					
+					jQuery('#map2').jmap('CreateMarkerManager', {'markerManager':'MarkerManager'});
+					for (var i=0;i<10;i++) {
+						var lat = 37.44 + (Math.random() - 0.5)*14.5;
+						var lng = -122.14 + (Math.random() - 0.5)*36.0;
+						jQuery('#map2').jmap('AddMarker', {'pointLatLng': [lat,lng]});
+					}
+       	});
+    </script>
+    
+    </body>
+</html>

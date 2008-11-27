@@ -174,6 +174,9 @@
             <function name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
                 <description>Default options for CreateMarkerManager</description>
                 <parameters>
+                    <parameter name="markerManager" type="String">
+                        <description>The type of marker manager to use. Options are &apos;GMarkerManager&apos; (default) and &apos;MarkerManager&apos;. (Added r72)</description>
+                    </parameter>
                     <parameter name="borderPadding" type="Number">
                         <description>Specifies, in pixels, the extra padding outside the map&apos;s current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.</description>
                     </parameter>
@@ -189,6 +192,25 @@
                 <return-types>
                     <return-type type="Object" />
                 </return-types>
+                <property name="defaults" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                    <description>Default options for CreateMarkerManager</description>
+                    <parameters>
+                        <parameter name="markerManager" type="String">
+                            <description>The type of marker manager to use. Options are &apos;GMarkerManager&apos; (default) and &apos;MarkerManager&apos;. (Added r72)</description>
+                        </parameter>
+                        <parameter name="borderPadding" type="Number">
+                            <description>Specifies, in pixels, the extra padding outside the map&apos;s current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.</description>
+                        </parameter>
+                        <parameter name="maxZoom" type="Number">
+                            <description>The maximum zoom level to show markers at</description>
+                        </parameter>
+                        <parameter name="trackMarkers" type="Boolean">
+                            <description>Indicates whether or not a marker manager should track markers&apos; movements.</description>
+                        </parameter>
+                    </parameters>
+                    <aliases>
+                        <alias name="Mapifies.CreateMarkerManager.defaults" />                    </aliases>
+                </property>
                 <property name="&apos;borderPadding&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
                 </property>
                 <property name="&apos;maxZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
@@ -198,6 +220,14 @@
             </function>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
+            <object_literal name="markerManagerOptions" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="&apos;borderPadding&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;maxZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="&apos;trackMarkers&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </object_literal>
             <property name="markerManager" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
             <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">

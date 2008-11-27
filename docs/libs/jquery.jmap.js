@@ -298,7 +298,7 @@ Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 };
 
 /**
- * Check if a map container element has been resized or toggled from show/hide
+ * Check if a map container element has been resized or toggled from show/hide (Added r68)
  * @method
  * @namespace Mapifies
  * @id Mapifies.CheckResize
@@ -775,6 +775,7 @@ Mapifies.CreateMarkerManager = function(element, options, callback) {
 	 */
 	function defaults() {
 		return {
+			'markerManager': 'GMarkerManager',
 			// Border Padding in pixels
 			'borderPadding': 100,
 			// Max zoom level 
@@ -785,7 +786,14 @@ Mapifies.CreateMarkerManager = function(element, options, callback) {
 	}
 	var thisMap = Mapifies.MapObjects.Get(element);
 	options = jQuery.extend(defaults(), options);
-	var markerManager = new GMarkerManager(thisMap, options);
+	
+	var markerManagerOptions = {
+		'borderPadding': options.borderPadding,
+		'maxZoom': options.maxZoom,
+		'trackMarkers': options.trackMarkers
+	}
+	
+	var markerManager = new window[options.markerManager](thisMap, options);
 	Mapifies.MapObjects.Append(element, 'MarkerManager',markerManager);
 
 	// Return the callback
