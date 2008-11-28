@@ -35,7 +35,7 @@
                         <code>
 jQuery(document).ready(function(){
     
-    jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+    jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':[37.4419, -122.1419]});
     
     jQuery('#address-submit-1').click(function(){
         jQuery('#map1').jmap('SearchAddress', {
@@ -115,7 +115,7 @@ jQuery('#point-submit-1').click(function(){
     <script type="text/javascript">
         jQuery(document).ready(function(){
             
-            jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter':[37.4419, -122.1419]});
+            jQuery('#map1, #map2').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':[37.4419, -122.1419]});
             
             jQuery('#address-submit-1').click(function(){
                 jQuery('#map1').jmap('SearchAddress', {

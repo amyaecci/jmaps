@@ -27,7 +27,7 @@
                     <pre>
                         <code>
 jQuery(document).ready(function(){
-	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.714996739064084,-74.00665283203125]});
+	jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':[40.714996739064084,-74.00665283203125]});
 	
 	jQuery('.add-traffic').click(function(){
 		jQuery('#map1').jmap('AddTrafficInfo', null, function(traffic, options) {
@@ -52,7 +52,7 @@ jQuery(document).ready(function(){
     
     <script type="text/javascript">
         jQuery(document).ready(function(){
-					jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':[40.714996739064084,-74.00665283203125]});
+					jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':[40.714996739064084,-74.00665283203125]});
 					
 					jQuery('.add-traffic').click(function(){
 						jQuery('#map1').jmap('AddTrafficInfo', null, function(traffic, options) {

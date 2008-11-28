@@ -37,31 +37,6 @@ Mapifies.SearchCode = function ( code ) {
 }
 
 /**
- * An internal function to get the google maptype constant
- * @method
- * @namespace Mapifies
- * @id Mapifies.GetMapType
- * @alias Mapifies.GetMapType
- * @param {String} mapType The string of the map type.
- * @return {String} mapType The Google constant for a maptype.
- */
-Mapifies.GetMapType = function ( mapType ) {
-	// Lets set our map type based on the options
-	switch(mapType) {
-		case 'map':	// Normal Map
-			mapType = G_NORMAL_MAP;
-		break;
-		case 'sat':	// Satallite Imagery
-			mapType = G_SATELLITE_MAP;
-		break;
-		case 'hybrid':	//Hybrid Map
-			mapType = G_HYBRID_MAP;
-		break;
-	};
-	return mapType;
-};
-
-/**
  * An internal function to get the google travel mode constant
  * @method
  * @namespace Mapifies

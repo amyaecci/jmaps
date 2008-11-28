@@ -75,7 +75,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 	 * @id Mapifies.Initialise.defaults
 	 * @alias Mapifies.Initialise.defaults
 	 * @param {String} language The locale language for the map
-	 * @param {String} mapType The type of map to create.  Options are 'map' (default), 'sat' and 'hybrid'.
+	 * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP (default). (Changed r74).
 	 * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
 	 * @param {Number} mapZoom The initial zoom level of the map.
 	 * @param {String} mapControl The option for the map control.  The options are 'small' (default), 'large' or 'none'
@@ -95,8 +95,8 @@ Mapifies.Initialise = function ( element, options, callback ) {
 		return {
 			// Initial type of map to display
 			'language': 'en',
-			// Options: "map", "sat", "hybrid"
-			'mapType': 'map',
+			// The constant of the map type to pass
+			'mapType': G_NORMAL_MAP,
 			// Initial map center
 			'mapCenter': [55.958858,-3.162302],
 			// Initial zoom level
@@ -133,8 +133,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 	if (GBrowserIsCompatible()) {
 			
 		var thisMap = Mapifies.MapObjects.Set(element, options);
-		var mapType = Mapifies.GetMapType(options.mapType);
-		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]), options.mapZoom, mapType);
+		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]), options.mapZoom, options.mapType);
 		
 		if (options.mapShowjMapsIcon) {
 			Mapifies.AddScreenOverlay(element,
@@ -217,7 +216,7 @@ Mapifies.MoveTo = function ( element, options, callback ) {
    * @id Mapifies.MoveTo
    * @alias Mapifies.MoveTo
    * @param {String} centerMethod The element to initialise the map on.
-   * @param {String} mapType The type of map to create.  Options are 'map' (default), 'sat' and 'hybrid'.
+   * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).
    * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
    * @param {Number} mapZoom The initial zoom level of the map.
    * @return {Function} callback The callback option with the point object and options or true.
@@ -232,12 +231,10 @@ Mapifies.MoveTo = function ( element, options, callback ) {
 	};
 	var thisMap = Mapifies.MapObjects.Get(element);
 	options = jQuery.extend(defaults(), options);	
-	if (options.mapType)
-		var mapType = Mapifies.GetMapType(options.mapType);
 	var point = new GLatLng(options.mapCenter[0], options.mapCenter[1]);
 	switch (options.centerMethod) {
 		case 'normal':
-			thisMap.setCenter(point, options.mapZoom, mapType);
+			thisMap.setCenter(point, options.mapZoom, options.mapType);
 		break;
 		case 'pan':
 			thisMap.panTo(point);
@@ -1200,31 +1197,6 @@ Mapifies.SearchCode = function ( code ) {
 		break;
 	};
 }
-
-/**
- * An internal function to get the google maptype constant
- * @method
- * @namespace Mapifies
- * @id Mapifies.GetMapType
- * @alias Mapifies.GetMapType
- * @param {String} mapType The string of the map type.
- * @return {String} mapType The Google constant for a maptype.
- */
-Mapifies.GetMapType = function ( mapType ) {
-	// Lets set our map type based on the options
-	switch(mapType) {
-		case 'map':	// Normal Map
-			mapType = G_NORMAL_MAP;
-		break;
-		case 'sat':	// Satallite Imagery
-			mapType = G_SATELLITE_MAP;
-		break;
-		case 'hybrid':	//Hybrid Map
-			mapType = G_HYBRID_MAP;
-		break;
-	};
-	return mapType;
-};
 
 /**
  * An internal function to get the google travel mode constant

@@ -30,7 +30,7 @@ jQuery(document).ready(function(){
 
 	var streetMapCenter = [40.74569634433956,-73.99635314941406];
 	
-	jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter':streetMapCenter});
+	jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':streetMapCenter});
 	
 	jQuery('.add-streetview').click(function(){
 		jQuery('#map1').jmap('CreateStreetviewPanorama', {
@@ -38,7 +38,7 @@ jQuery(document).ready(function(){
 		}, function (view, options){
 			jQuery('.remove-streetview').click(function(){
 				jQuery('#map1').jmap('RemoveStreetviewPanorama', view);
-				jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+				jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter': streetMapCenter});
 				return false;
 			});
 		});
@@ -62,7 +62,7 @@ jQuery(document).ready(function(){
 
 	var streetMapCenter = [40.74569634433956,-73.99635314941406];
 
-	jQuery('#map2').jmap('init', {'mapType':'hybrid','mapCenter':streetMapCenter});
+	jQuery('#map2').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter':streetMapCenter});
 	jQuery('.add-streetview-2').click(function(){
 		jQuery('#map2').jmap('CreateStreetviewPanorama', {
 			'latlng':streetMapCenter,
@@ -94,7 +94,7 @@ jQuery(document).ready(function(){
 					
 					var streetMapCenter = [40.74569634433956,-73.99635314941406];
 					
-					jQuery('#map1, #map2').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+					jQuery('#map1, #map2').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter': streetMapCenter});
 					
 					jQuery('.add-streetview').click(function(){
 						jQuery('#map1').jmap('CreateStreetviewPanorama', {
@@ -102,7 +102,7 @@ jQuery(document).ready(function(){
 						}, function (view, options){
 							jQuery('.remove-streetview').click(function(){
 								jQuery('#map1').jmap('RemoveStreetviewPanorama', view);
-								jQuery('#map1').jmap('init', {'mapType':'hybrid','mapCenter': streetMapCenter});
+								jQuery('#map1').jmap('init', {'mapType':G_HYBRID_MAP,'mapCenter': streetMapCenter});
 								return false;
 							});
 						});
