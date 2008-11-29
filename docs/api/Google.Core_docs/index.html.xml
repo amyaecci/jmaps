@@ -78,7 +78,7 @@
                         <description>The locale language for the map</description>
                     </parameter>
                     <parameter name="mapType" type="String">
-                        <description>The type of map to create. Options are &apos;map&apos; (default), &apos;sat&apos; and &apos;hybrid&apos;.</description>
+                        <description>The type of map to create. Takes a map type constant such as G_NORMAL_MAP (default). (Changed r74).</description>
                     </parameter>
                     <parameter name="mapCenter" type="Object">
                         <description>An array that contains the Lat/Lng coordinates of the map center.</description>
@@ -127,7 +127,7 @@
                 </return-types>
                 <property name="&apos;language&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
                 </property>
-                <property name="&apos;mapType&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                <property name="&apos;mapType&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
                 </property>
                 <property name="&apos;mapCenter&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
                 </property>
@@ -162,8 +162,6 @@
             </property>
             <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
-            <property name="mapType" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
-            </property>
         </function>
         <function name="MoveTo" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
             <description>Default options for MoveTo</description>
@@ -172,7 +170,7 @@
                     <description>The element to initialise the map on.</description>
                 </parameter>
                 <parameter name="mapType" type="String">
-                    <description>The type of map to create. Options are &apos;map&apos; (default), &apos;sat&apos; and &apos;hybrid&apos;.</description>
+                    <description>The type of map to create. Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).</description>
                 </parameter>
                 <parameter name="mapCenter" type="Object">
                     <description>An array that contains the Lat/Lng coordinates of the map center.</description>
@@ -193,7 +191,7 @@
                         <description>The element to initialise the map on.</description>
                     </parameter>
                     <parameter name="mapType" type="String">
-                        <description>The type of map to create. Options are &apos;map&apos; (default), &apos;sat&apos; and &apos;hybrid&apos;.</description>
+                        <description>The type of map to create. Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).</description>
                     </parameter>
                     <parameter name="mapCenter" type="Object">
                         <description>An array that contains the Lat/Lng coordinates of the map center.</description>
@@ -214,7 +212,7 @@
                             <description>The element to initialise the map on.</description>
                         </parameter>
                         <parameter name="mapType" type="String">
-                            <description>The type of map to create. Options are &apos;map&apos; (default), &apos;sat&apos; and &apos;hybrid&apos;.</description>
+                            <description>The type of map to create. Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).</description>
                         </parameter>
                         <parameter name="mapCenter" type="Object">
                             <description>An array that contains the Lat/Lng coordinates of the map center.</description>
@@ -238,8 +236,6 @@
             <property name="point" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
             <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
-            </property>
-            <property name="mapType" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
             </property>
         </function>
         <function name="SavePosition" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
@@ -322,6 +318,27 @@
             </parameters>
             <aliases>
                 <alias name="Mapifies.CheckResize" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <property name="thisMap" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="SetMapType" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Allows you to pass a google maptype constant and update the map type (added r75)</description>
+            <parameters>
+                <parameter name="element" type="jQuery">
+                    <description>The element to initialise the map on.</description>
+                </parameter>
+                <parameter name="options" type="String">
+                    <description>The option of the maptype.</description>
+                </parameter>
+                <parameter name="callback" type="Object">
+                    <description>The callback function to pass out after initialising the map.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.SetMapType" />            </aliases>
             <return-types>
                 <return-type type="Function" />
             </return-types>

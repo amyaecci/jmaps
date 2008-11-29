@@ -219,7 +219,6 @@ Mapifies.MoveTo = function ( element, options, callback ) {
    * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).
    * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
    * @param {Number} mapZoom The initial zoom level of the map.
-   * @return {Function} callback The callback option with the point object and options or true.
    */	
 	function defaults() {
 		return {
@@ -310,3 +309,20 @@ Mapifies.CheckResize = function( element, options, callback ) {
 	thisMap.checkResize();
 	if (typeof callback == 'function') return callback(element);
 };
+
+/**
+ * Allows you to pass a google maptype constant and update the map type (added r75)
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.SetMapType
+ * @alias Mapifies.SetMapType
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {String} options The option of the maptype.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.SetMapType = function (element, options, callback) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.setMapType(window[options]);
+	if (typeof callback == 'function') return callback(element);
+}

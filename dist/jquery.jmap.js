@@ -312,6 +312,23 @@ Mapifies.CheckResize = function( element, options, callback ) {
 };
 
 /**
+ * Allows you to pass a google maptype constant and update the map type
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.SetMapType
+ * @alias Mapifies.SetMapType
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {String} options The option of the maptype.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.SetMapType = function (element, options, callback) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.setMapType(window[options]);
+	if (typeof callback == 'function') return callback(element);
+}
+
+/**
  * The SearchAddress function takes a map, options and callback function.  The options can contain either an address string, to which a point is returned - or reverse geocoding a GLatLng, where an address is returned
  * @method
  * @namespace Mapifies
@@ -1161,6 +1178,31 @@ Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 	if (typeof callback === 'function') return callback(trafficOverlay);
 	return;
 };
+Mapifies.Copyright = {};
+
+Mapifies.AddCopyright = function (element, options, callback) {
+	function defaults() {
+		return {
+			'copyrightCollectionPrefix': '&copy; ',
+			'copyrightID': null,
+			'copyrightBounds': null,
+			'copyrightMinZoom': null,
+			'copyrightText': null
+		}
+	};
+	options = jQuery.extend(defaults(), options);
+	
+	var copyright = new GCopyright(
+		options.copyrightID,
+		new GLatLng(options.copyrightBounds[0], options.copyrightBounds[1]),
+		options.copyrightMinZoom,
+		options.copyrightText
+	);
+	var copyrightCollection = new GCopyrightCollection(options.copyrightCollectionPrefix);
+	copyrightCollection.addCopyright(copyright);
+	if (typeof callback === 'function') return callback(copyrightCollection, copyright, options);
+};
+
 /**
  * A helper method that allows you to pass the status code of a search and get back a friendly oject
  * @method

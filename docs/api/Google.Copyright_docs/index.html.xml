@@ -1,0 +1,92 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="Google.Copyright.js">
+    <property name="Mapifies" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <object_literal name="Copyright" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        </object_literal>
+        <function name="AddCopyright" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Default options for AddCopyright</description>
+            <parameters>
+                <parameter name="copyrightCollectionPrefix" type="String">
+                    <description>The prefix of the text for the copyright.</description>
+                </parameter>
+                <parameter name="copyrightID" type="Number">
+                    <description>The index for the map type</description>
+                </parameter>
+                <parameter name="copyrightBounds" type="Object">
+                    <description>An array of the bounds of the maptype</description>
+                </parameter>
+                <parameter name="copyrightMinZoom" type="Number">
+                    <description>The minimum level to show the maptype at</description>
+                </parameter>
+                <parameter name="copyrightText" type="String">
+                    <description>The copyright text for the maptype.</description>
+                </parameter>
+            </parameters>
+            <aliases>
+                <alias name="Mapifies.AddCopyright" />            </aliases>
+            <return-types>
+                <return-type type="Function" />
+            </return-types>
+            <function name="AddCopyright" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                <description>Default options for AddCopyright</description>
+                <parameters>
+                    <parameter name="copyrightCollectionPrefix" type="String">
+                        <description>The prefix of the text for the copyright.</description>
+                    </parameter>
+                    <parameter name="copyrightID" type="Number">
+                        <description>The index for the map type</description>
+                    </parameter>
+                    <parameter name="copyrightBounds" type="Object">
+                        <description>An array of the bounds of the maptype</description>
+                    </parameter>
+                    <parameter name="copyrightMinZoom" type="Number">
+                        <description>The minimum level to show the maptype at</description>
+                    </parameter>
+                    <parameter name="copyrightText" type="String">
+                        <description>The copyright text for the maptype.</description>
+                    </parameter>
+                </parameters>
+                <aliases>
+                    <alias name="Mapifies.AddCopyright" />                </aliases>
+                <return-types>
+                    <return-type type="Function" />
+                </return-types>
+                <property name="AddCopyright" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                    <description>Default options for AddCopyright</description>
+                    <parameters>
+                        <parameter name="copyrightCollectionPrefix" type="String">
+                            <description>The prefix of the text for the copyright.</description>
+                        </parameter>
+                        <parameter name="copyrightID" type="Number">
+                            <description>The index for the map type</description>
+                        </parameter>
+                        <parameter name="copyrightBounds" type="Object">
+                            <description>An array of the bounds of the maptype</description>
+                        </parameter>
+                        <parameter name="copyrightMinZoom" type="Number">
+                            <description>The minimum level to show the maptype at</description>
+                        </parameter>
+                        <parameter name="copyrightText" type="String">
+                            <description>The copyright text for the maptype.</description>
+                        </parameter>
+                    </parameters>
+                    <aliases>
+                        <alias name="Mapifies.AddCopyright" />                    </aliases>
+                </property>
+                <property name="&apos;copyrightID&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;copyrightBounds&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;copyrightMinZoom&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+                <property name="&apos;copyrightText&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                </property>
+            </function>
+            <property name="copyright" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="copyrightCollection" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="options" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </property>
+</javascript>

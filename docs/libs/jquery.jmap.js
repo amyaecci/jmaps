@@ -75,7 +75,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 	 * @id Mapifies.Initialise.defaults
 	 * @alias Mapifies.Initialise.defaults
 	 * @param {String} language The locale language for the map
-	 * @param {String} mapType The type of map to create.  Options are 'map' (default), 'sat' and 'hybrid'.
+	 * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP (default). (Changed r74).
 	 * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
 	 * @param {Number} mapZoom The initial zoom level of the map.
 	 * @param {String} mapControl The option for the map control.  The options are 'small' (default), 'large' or 'none'
@@ -95,8 +95,8 @@ Mapifies.Initialise = function ( element, options, callback ) {
 		return {
 			// Initial type of map to display
 			'language': 'en',
-			// Options: "map", "sat", "hybrid"
-			'mapType': 'map',
+			// The constant of the map type to pass
+			'mapType': G_NORMAL_MAP,
 			// Initial map center
 			'mapCenter': [55.958858,-3.162302],
 			// Initial zoom level
@@ -133,8 +133,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 	if (GBrowserIsCompatible()) {
 			
 		var thisMap = Mapifies.MapObjects.Set(element, options);
-		var mapType = Mapifies.GetMapType(options.mapType);
-		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]), options.mapZoom, mapType);
+		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]), options.mapZoom, options.mapType);
 		
 		if (options.mapShowjMapsIcon) {
 			Mapifies.AddScreenOverlay(element,
@@ -217,7 +216,7 @@ Mapifies.MoveTo = function ( element, options, callback ) {
    * @id Mapifies.MoveTo
    * @alias Mapifies.MoveTo
    * @param {String} centerMethod The element to initialise the map on.
-   * @param {String} mapType The type of map to create.  Options are 'map' (default), 'sat' and 'hybrid'.
+   * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).
    * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
    * @param {Number} mapZoom The initial zoom level of the map.
    * @return {Function} callback The callback option with the point object and options or true.
@@ -232,12 +231,10 @@ Mapifies.MoveTo = function ( element, options, callback ) {
 	};
 	var thisMap = Mapifies.MapObjects.Get(element);
 	options = jQuery.extend(defaults(), options);	
-	if (options.mapType)
-		var mapType = Mapifies.GetMapType(options.mapType);
 	var point = new GLatLng(options.mapCenter[0], options.mapCenter[1]);
 	switch (options.centerMethod) {
 		case 'normal':
-			thisMap.setCenter(point, options.mapZoom, mapType);
+			thisMap.setCenter(point, options.mapZoom, options.mapType);
 		break;
 		case 'pan':
 			thisMap.panTo(point);
@@ -313,6 +310,23 @@ Mapifies.CheckResize = function( element, options, callback ) {
 	thisMap.checkResize();
 	if (typeof callback == 'function') return callback(element);
 };
+
+/**
+ * Allows you to pass a google maptype constant and update the map type
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.SetMapType
+ * @alias Mapifies.SetMapType
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {String} options The option of the maptype.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.SetMapType = function (element, options, callback) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.setMapType(window[options]);
+	if (typeof callback == 'function') return callback(element);
+}
 
 /**
  * The SearchAddress function takes a map, options and callback function.  The options can contain either an address string, to which a point is returned - or reverse geocoding a GLatLng, where an address is returned
@@ -768,6 +782,7 @@ Mapifies.CreateMarkerManager = function(element, options, callback) {
 	 * @namespace Mapifies.CreateMarkerManager
 	 * @id Mapifies.CreateMarkerManager.defaults
 	 * @alias Mapifies.CreateMarkerManager.defaults
+	 * @param {String} markerManager The type of marker manager to use.  Options are 'GMarkerManager' (default) and 'MarkerManager'.  (Added r72)
 	 * @param {Number} borderPadding Specifies, in pixels, the extra padding outside the map's current viewport monitored by a manager. Markers that fall within this padding are added to the map, even if they are not fully visible.
 	 * @param {Number} maxZoom The maximum zoom level to show markers at
 	 * @param {Boolean} trackMarkers Indicates whether or not a marker manager should track markers' movements.
@@ -1163,6 +1178,31 @@ Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 	if (typeof callback === 'function') return callback(trafficOverlay);
 	return;
 };
+Mapifies.Copyright = {};
+
+Mapifies.AddCopyright = function (element, options, callback) {
+	function defaults() {
+		return {
+			'copyrightCollectionPrefix': '&copy; ',
+			'copyrightID': null,
+			'copyrightBounds': null,
+			'copyrightMinZoom': null,
+			'copyrightText': null
+		}
+	};
+	options = jQuery.extend(defaults(), options);
+	
+	var copyright = new GCopyright(
+		options.copyrightID,
+		new GLatLng(options.copyrightBounds[0], options.copyrightBounds[1]),
+		options.copyrightMinZoom,
+		options.copyrightText
+	);
+	var copyrightCollection = new GCopyrightCollection(options.copyrightCollectionPrefix);
+	copyrightCollection.addCopyright(copyright);
+	if (typeof callback === 'function') return callback(copyrightCollection, copyright, options);
+};
+
 /**
  * A helper method that allows you to pass the status code of a search and get back a friendly oject
  * @method
@@ -1199,31 +1239,6 @@ Mapifies.SearchCode = function ( code ) {
 		break;
 	};
 }
-
-/**
- * An internal function to get the google maptype constant
- * @method
- * @namespace Mapifies
- * @id Mapifies.GetMapType
- * @alias Mapifies.GetMapType
- * @param {String} mapType The string of the map type.
- * @return {String} mapType The Google constant for a maptype.
- */
-Mapifies.GetMapType = function ( mapType ) {
-	// Lets set our map type based on the options
-	switch(mapType) {
-		case 'map':	// Normal Map
-			mapType = G_NORMAL_MAP;
-		break;
-		case 'sat':	// Satallite Imagery
-			mapType = G_SATELLITE_MAP;
-		break;
-		case 'hybrid':	//Hybrid Map
-			mapType = G_HYBRID_MAP;
-		break;
-	};
-	return mapType;
-};
 
 /**
  * An internal function to get the google travel mode constant
