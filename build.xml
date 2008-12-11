@@ -23,7 +23,7 @@
 						<fileset dir="${SRC_DIR}/google" includes="Google.ScreenOverlay.js" />
 						<fileset dir="${SRC_DIR}/google" includes="Google.Streetview.js" />
 						<fileset dir="${SRC_DIR}/google" includes="Google.Traffic.js" />
-						<fileset dir="${SRC_DIR}/google" includes="Google.Copyright.js" />
+						<!--<fileset dir="${SRC_DIR}/google" includes="Google.Copyright.js" />-->
 						<fileset dir="${SRC_DIR}/google" includes="Mapifies.Helpers.js" />
 						<fileset dir="${SRC_DIR}" includes="Mapifies.jQuery.Alias.js" />
         </concat>

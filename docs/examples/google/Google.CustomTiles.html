@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>jMaps Examples: Changing Map Types</title>
+        <link rel="stylesheet" media="screen" href="../css/main.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h2>jMaps</h2>
+        </div>
+        <div class="all-examples">
+            
+            <div class="all-example-description">
+                <p>This example shows you how easily jQuery + jMaps makes changing map types.</p>
+                <p>
+                	In the below example will show how to to easily change the map type using the SetMapType function.
+								</p>
+            </div>
+            
+            <div class="example">
+                <h3>Example 1: Changing Map Types.</h3>
+                <div id="map1" class="jmap"></div>
+								<a href="#" class="planet" rel="G_PHYSICAL_MAP">Earth</a> |
+								<a href="#" class="planet" rel="G_MOON_ELEVATION_MAP">Moon</a> |
+								<a href="#" class="planet" rel="G_MARS_ELEVATION_MAP">Mars</a> |
+								<a href="#" class="planet" rel="G_SKY_VISIBLE_MAP">Sky</a>
+                <div class="example-code">
+                    <pre>
+                        <code>
+jQuery(document).ready(function(){
+	jQuery('#map1').jmap('init', {'mapType':G_PHYSICAL_MAP,'mapCenter':[37.4419, -122.1419], 'mapZoom':1}, function(thisMap, options){
+		
+		jQuery('.planet').click(function(){
+			var mapType = jQuery(this).attr('rel');
+			jQuery('#map1').jmap('SetMapType', mapType);
+		});
+	});
+});
+                        </code>
+                    </pre>
+                </div>
+        </div>
+		<!-- Localhost Key-->
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BTpH3CbXHjuCVmaTc5MkkU4wO1RRhTDHHVxsVRxIzxPFaQpyblxObvHbw" type="text/javascript"></script>-->
+    
+    <!-- map.ifies.org -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAApCYnM8S-TSRBhQk16Ynr4BRMFDArna7TyLvN-BP2UPnpVPTTThTJtWBJwhvgDdYt37zadgzAjoYHSQ" type="text/javascript"></script>
+		    
+    <script type="text/javascript" src="../../libs/jquery.js"></script>
+    <script type="text/javascript" src="../../libs/jquery.jmap.js"></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function(){					
+					jQuery('#map1').jmap('init', {'mapType':G_PHYSICAL_MAP,'mapCenter':[37.4419, -122.1419], 'mapZoom':1}, function(thisMap, options){
+						jQuery('#map1').jmap('AddCopyright', {
+							'copyrightCollectionPrefix': '(c) ',
+							'copyrightID': 1,
+							'copyrightBounds': [[-90,-180], [90,180]],
+							'copyrightMinZoom': 0,
+							'copyrightText': '©2007 Google'
+						}, function(copyrightCollection, copyright, options){
+							console.log(copyrightCollection);
+							console.log(copyright);
+						});
+					});
+				});
+    </script>
+    
+    </body>
+</html>

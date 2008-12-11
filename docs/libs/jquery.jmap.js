@@ -219,7 +219,6 @@ Mapifies.MoveTo = function ( element, options, callback ) {
    * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).
    * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
    * @param {Number} mapZoom The initial zoom level of the map.
-   * @return {Function} callback The callback option with the point object and options or true.
    */	
 	function defaults() {
 		return {
@@ -312,7 +311,7 @@ Mapifies.CheckResize = function( element, options, callback ) {
 };
 
 /**
- * Allows you to pass a google maptype constant and update the map type
+ * Allows you to pass a google maptype constant and update the map type (added r75)
  * @method
  * @namespace Mapifies
  * @id Mapifies.SetMapType
@@ -1180,7 +1179,31 @@ Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 };
 Mapifies.Copyright = {};
 
+
+/**
+ * Adds additional objects and functions to an existing MapObject (added r75)
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.AddCopyright
+ * @alias Mapifies.AddCopyright
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {Object} options The object that contains the options.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the copyright container and copywrite object.
+ */
 Mapifies.AddCopyright = function (element, options, callback) {
+	/**
+ 	 * Default options for AddCopyright
+   * @method
+   * @namespace Mapifies
+   * @id Mapifies.AddCopyright
+   * @alias Mapifies.AddCopyright
+   * @param {String} copyrightCollectionPrefix The prefix of the text for the copyright.
+   * @param {Number} copyrightID The index for the map type
+   * @param {Object} copyrightBounds An array of the bounds of the maptype
+   * @param {Number} copyrightMinZoom The minimum level to show the maptype at
+   * @param {String} copyrightText The copyright text for the maptype.
+   */
 	function defaults() {
 		return {
 			'copyrightCollectionPrefix': '&copy; ',
@@ -1192,9 +1215,12 @@ Mapifies.AddCopyright = function (element, options, callback) {
 	};
 	options = jQuery.extend(defaults(), options);
 	
+	var boundSW = options.copyrightBounds[0];
+	var boundNE = options.copyrightBounds[1];
+	
 	var copyright = new GCopyright(
 		options.copyrightID,
-		new GLatLng(options.copyrightBounds[0], options.copyrightBounds[1]),
+		new GLatLngBounds(new GLatLng(boundSW[0], boundSW[1]), new GLatLng(boundNE[0], boundNE[1])),
 		options.copyrightMinZoom,
 		options.copyrightText
 	);

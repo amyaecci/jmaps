@@ -37,9 +37,12 @@ Mapifies.AddCopyright = function (element, options, callback) {
 	};
 	options = jQuery.extend(defaults(), options);
 	
+	var boundSW = options.copyrightBounds[0];
+	var boundNE = options.copyrightBounds[1];
+	
 	var copyright = new GCopyright(
 		options.copyrightID,
-		new GLatLng(options.copyrightBounds[0], options.copyrightBounds[1]),
+		new GLatLngBounds(new GLatLng(boundSW[0], boundSW[1]), new GLatLng(boundNE[0], boundNE[1])),
 		options.copyrightMinZoom,
 		options.copyrightText
 	);

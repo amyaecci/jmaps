@@ -1,9 +1,14 @@
 /**
- * @classDescription The Mapifies variable is the main class object for jMaps
+ * The main Mapifies object
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies
+ * @author Tane Piper <tane@digitalspaghetti.me.uk>
+ * 
  */
 var Mapifies;
 
-if (!Mapifies) Mapifies = {};
+if (!Mapifies) Mapifies = function(){};
 
 /**
  * The main object that holds the maps
@@ -290,7 +295,7 @@ Mapifies.GotoSavedPosition = function ( element, options, callback) {
 Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	var keyboardHandler = new GKeyboardHandler(thisMap);
-	if (typeof callback == 'function') return callback(keyboardHandler);
+	if (typeof callback == 'function') return callback(keyboardHandler, thisMap);
 };
 
 /**
@@ -307,7 +312,7 @@ Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 Mapifies.CheckResize = function( element, options, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.checkResize();
-	if (typeof callback == 'function') return callback(element);
+	if (typeof callback == 'function') return callback(thisMap);
 };
 
 /**
@@ -324,5 +329,22 @@ Mapifies.CheckResize = function( element, options, callback ) {
 Mapifies.SetMapType = function (element, options, callback) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.setMapType(window[options]);
-	if (typeof callback == 'function') return callback(element);
+	if (typeof callback == 'function') return callback(thisMap);
+}
+
+/**
+ * A function to clear the map of all overlays including markers, polygons and images
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.ClearMap
+ * @alias Mapifies.ClearMap
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {String} options The option of the maptype.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.ClearMap = function (element, options, callback) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.clearOverlays();
+	if (typeof callback == 'function') return callback(thisMap);
 }

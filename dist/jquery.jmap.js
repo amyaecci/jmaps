@@ -1,9 +1,14 @@
 /**
- * @classDescription The Mapifies variable is the main class object for jMaps
+ * The main Mapifies object
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies
+ * @author Tane Piper <tane@digitalspaghetti.me.uk>
+ * 
  */
 var Mapifies;
 
-if (!Mapifies) Mapifies = {};
+if (!Mapifies) Mapifies = function(){};
 
 /**
  * The main object that holds the maps
@@ -219,7 +224,6 @@ Mapifies.MoveTo = function ( element, options, callback ) {
    * @param {String} mapType The type of map to create.  Takes a map type constant such as G_NORMAL_MAP or null(default). (Changed r74).
    * @param {Object} mapCenter An array that contains the Lat/Lng coordinates of the map center.
    * @param {Number} mapZoom The initial zoom level of the map.
-   * @return {Function} callback The callback option with the point object and options or true.
    */	
 	function defaults() {
 		return {
@@ -291,7 +295,7 @@ Mapifies.GotoSavedPosition = function ( element, options, callback) {
 Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	var keyboardHandler = new GKeyboardHandler(thisMap);
-	if (typeof callback == 'function') return callback(keyboardHandler);
+	if (typeof callback == 'function') return callback(keyboardHandler, thisMap);
 };
 
 /**
@@ -308,11 +312,11 @@ Mapifies.CreateKeyboardHandler = function( element, options, callback ) {
 Mapifies.CheckResize = function( element, options, callback ) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.checkResize();
-	if (typeof callback == 'function') return callback(element);
+	if (typeof callback == 'function') return callback(thisMap);
 };
 
 /**
- * Allows you to pass a google maptype constant and update the map type
+ * Allows you to pass a google maptype constant and update the map type (added r75)
  * @method
  * @namespace Mapifies
  * @id Mapifies.SetMapType
@@ -325,7 +329,24 @@ Mapifies.CheckResize = function( element, options, callback ) {
 Mapifies.SetMapType = function (element, options, callback) {
 	var thisMap = Mapifies.MapObjects.Get(element);
 	thisMap.setMapType(window[options]);
-	if (typeof callback == 'function') return callback(element);
+	if (typeof callback == 'function') return callback(thisMap);
+}
+
+/**
+ * A function to clear the map of all overlays including markers, polygons and images
+ * @method
+ * @namespace Mapifies
+ * @id Mapifies.ClearMap
+ * @alias Mapifies.ClearMap
+ * @param {jQuery} element The element to initialise the map on.
+ * @param {String} options The option of the maptype.
+ * @param {Object} callback The callback function to pass out after initialising the map.
+ * @return {Function} callback The callback option with the map object handler.
+ */
+Mapifies.ClearMap = function (element, options, callback) {
+	var thisMap = Mapifies.MapObjects.Get(element);
+	thisMap.clearOverlays();
+	if (typeof callback == 'function') return callback(thisMap);
 }
 
 /**
@@ -1178,31 +1199,6 @@ Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
 	if (typeof callback === 'function') return callback(trafficOverlay);
 	return;
 };
-Mapifies.Copyright = {};
-
-Mapifies.AddCopyright = function (element, options, callback) {
-	function defaults() {
-		return {
-			'copyrightCollectionPrefix': '&copy; ',
-			'copyrightID': null,
-			'copyrightBounds': null,
-			'copyrightMinZoom': null,
-			'copyrightText': null
-		}
-	};
-	options = jQuery.extend(defaults(), options);
-	
-	var copyright = new GCopyright(
-		options.copyrightID,
-		new GLatLng(options.copyrightBounds[0], options.copyrightBounds[1]),
-		options.copyrightMinZoom,
-		options.copyrightText
-	);
-	var copyrightCollection = new GCopyrightCollection(options.copyrightCollectionPrefix);
-	copyrightCollection.addCopyright(copyright);
-	if (typeof callback === 'function') return callback(copyrightCollection, copyright, options);
-};
-
 /**
  * A helper method that allows you to pass the status code of a search and get back a friendly oject
  * @method
