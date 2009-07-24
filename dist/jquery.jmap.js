@@ -103,7 +103,7 @@ Mapifies.Initialise = function ( element, options, callback ) {
 			// The constant of the map type to pass
 			'mapType': G_NORMAL_MAP,
 			// Initial map center
-			'mapCenter': [55.958858,-3.162302],
+			'mapCenter': [37.421844, -122.084026],
 			// Initial zoom level
 			'mapZoom': 12,
 			// Initial map control size
